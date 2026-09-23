@@ -20,3 +20,4 @@
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 .portrait-frame{aspect-ratio:1;border-radius:50%}.portrait-frame img{object-position:center 22%}.citation-item a{display:flex;align-items:baseline;gap:7px;color:var(--lime)}.citation-item a strong{font:800 32px/1 'Manrope',sans-serif;letter-spacing:-.06em}.citation-item a small{font-size:12px;font-weight:700;color:#c3d1df}.citation-item a>span{font-size:14px}.citation-item{border-bottom:0}
 @media(max-width:620px){.portrait-frame{border-radius:50%}}
+.portrait-sticker-top{max-width:310px}.portrait-sticker-top strong{font-size:12px;white-space:nowrap}
