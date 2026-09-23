@@ -1,20 +1,18 @@
 const translations = {
   en: {
-    navAbout: 'About', navResearch: 'Research', navPublications: 'Publications', navNews: 'News', navContact: 'Get in touch',
+    latestWork: 'Latest work', navAbout: 'About', navResearch: 'Research', navPublications: 'Publications', navContact: 'Get in touch',
     heroEyebrow: 'PHD RESEARCHER · NANJING UNIVERSITY', heroGreeting: "Hello, I'm", heroIntro: 'I study how foundation models can think more deeply, remember more effectively, and compute more efficiently.', exploreWork: 'Explore my work', emailMe: 'Email me', portraitStatus: 'CURRENTLY EXPLORING', portraitFocus: 'Latent reasoning · Physical AI', portraitLocation: 'Nanjing University · Nanjing, China', scrollCue: 'SCROLL TO EXPLORE',
-    sectionAboutLabel: 'ABOUT', aboutTitle: 'Curiosity meets computation<span class="accent-dot">.</span>', aboutLead: "I am a Ph.D. student at the Software Institute, Nanjing University, advised by Prof. Shouqian Shi and working with Prof. Sheng Zhong's research team.", aboutText: 'My research sits at the intersection of large language model reasoning and intelligent systems. I explore latent-space computation, recursive reasoning, and efficient architectures to improve how foundation models reason. I am also interested in knowledge organization, memory-augmented reasoning, long-context modeling, and adaptive computation. In parallel, I collaborate with Prof. Yunhuai Liu’s team at Peking University on Physical AI and embodied intelligence.', affiliationLabel: 'AFFILIATION', affiliationValue: 'Software Institute<br>Nanjing University', advisorLabel: 'ADVISOR', advisorValue: 'Prof. Shouqian Shi', labLabel: 'RESEARCH GROUP', citationLabel: 'GOOGLE SCHOLAR · SEP 2026', citationUnit: 'citations',
-    sectionResearchLabel: 'RESEARCH', researchTitle: 'Questions worth exploring<span class="accent-dot">.</span>', researchSubtitle: 'Building more capable and efficient intelligence, from internal computation to embodied action.', researchOneTitle: 'Reasoning inside models', researchOneBody: 'Latent-space computation, recursive inference, and adaptive compute for stronger reasoning without unnecessary generation.', researchTwoTitle: 'Knowledge & memory', researchTwoBody: 'Organizing knowledge and building memory mechanisms that help foundation models handle long contexts and complex tasks.', researchThreeTitle: 'Physical AI', researchThreeBody: 'Exploring how intelligent systems connect perception, reasoning, and action in the physical world through embodied learning.',
-    sectionPublicationsLabel: 'PUBLICATIONS', publicationsTitle: 'Selected work<span class="accent-dot">.</span>', allPublications: 'All publications on Scholar', penelopeSummary: 'Penelope concentrates recurrent computation in a selected decoder interval, enabling efficient latent reasoning without repeatedly running the full model or generating a long visible chain of thought.', traceSummary: "A training-free approach that reveals local semantic evidence inside CLIP's global representation and uses it for dense vision-language understanding.", earlierTitle: 'Earlier work in service computing', earlierCaption: 'Selected journal papers · Full list on Google Scholar',
-    sectionNewsLabel: 'NEWS', newsTitle: 'Latest updates<span class="accent-dot">.</span>', newsType: 'NEW PREPRINT', newsHeading: 'Penelope is now available on arXiv.', newsBody: 'Our work on localized latent recurrence for efficient structured reasoning has been submitted to AAAI 2027.',
+    sectionAboutLabel: 'ABOUT', aboutTitle: 'Curiosity meets computation<span class="accent-dot">.</span>', aboutLead: "I am a Ph.D. student at the Software Institute, Nanjing University, advised by Prof. Shouqian Shi and working with Prof. Sheng Zhong's research team.", aboutText: 'I also collaborate with Prof. Yunhuai Liu’s team at Peking University on Physical AI and embodied intelligence.', affiliationLabel: 'AFFILIATION', affiliationValue: 'Software Institute<br>Nanjing University', advisorLabel: 'ADVISOR', advisorValue: 'Prof. Shouqian Shi', labLabel: 'RESEARCH GROUP', citationLabel: 'GOOGLE SCHOLAR · SEP 2026', citationUnit: 'citations',
+    sectionResearchLabel: 'RESEARCH', researchTitle: 'Questions worth exploring<span class="accent-dot">.</span>', researchSubtitle: 'Building more capable and efficient intelligence, from internal computation to embodied action.', researchOneTitle: 'Reasoning inside models', researchOneBody: 'I investigate latent recurrence to reduce visible reasoning steps and computational cost.', researchTwoTitle: 'Knowledge & memory', researchTwoBody: 'I study how models organize, retain, and retrieve knowledge for long-context reasoning.', researchThreeTitle: 'Physical AI', researchThreeBody: 'I explore how embodied agents connect perception, reasoning, and action in the physical world.',
+    sectionPublicationsLabel: 'PUBLICATIONS', publicationsTitle: 'Selected work<span class="accent-dot">.</span>', allPublications: 'All publications on Scholar', penelopeSummary: 'Penelope focuses recurrent computation within a selected decoder interval to support efficient latent reasoning, without repeatedly running the full model or generating lengthy reasoning traces.', penelopeDate: 'JUL 2026', penelopeSubmission: 'Submitted to AAAI 2027', traceSummary: "A training-free approach that reveals local semantic evidence inside CLIP's global representation and uses it for dense vision-language understanding.", earlierTitle: 'Earlier work in service computing', earlierCaption: 'Selected journal papers · Full list on Google Scholar',
     sectionContactLabel: 'CONTACT', contactTitle: "Let's think together<span class=\"accent-dot\">.</span>", contactText: "Interested in reasoning, intelligent systems, or a research collaboration? I'd be glad to hear from you.", footerLocation: 'Made in Nanjing · Thinking everywhere', backToTop: 'Back to top'
   },
   zh: {
-    navAbout: '关于', navResearch: '研究', navPublications: '论文', navNews: '动态', navContact: '联系我',
+    latestWork: '最新研究', navAbout: '关于', navResearch: '研究', navPublications: '论文', navContact: '联系我',
     heroEyebrow: '南京大学 · 博士研究生', heroGreeting: '你好，我是', heroIntro: '我研究如何让基础模型推理得更深入、记忆得更有效，并以更少的计算完成复杂任务。', exploreWork: '了解我的研究', emailMe: '发送邮件', portraitStatus: '当前研究方向', portraitFocus: '隐空间推理 · 物理智能', portraitLocation: '南京大学 · 中国南京', scrollCue: '向下探索',
-    sectionAboutLabel: '关于', aboutTitle: '以好奇心探索计算<span class="accent-dot">.</span>', aboutLead: '我是南京大学软件学院博士研究生，师从石守谦老师，在仲盛教授团队开展研究。', aboutText: '我的研究聚焦大模型推理与智能系统，探索隐空间计算、递归推理和高效架构设计，提升基础模型的推理能力。我也关注知识组织、记忆增强、超长上下文建模与推理过程中的动态计算优化。同时，我与北京大学刘云淮教授团队合作，研究 Physical AI 与具身智能。', affiliationLabel: '所在单位', affiliationValue: '南京大学<br>软件学院', advisorLabel: '导师', advisorValue: '石守谦教授', labLabel: '研究团队', citationLabel: 'GOOGLE SCHOLAR · 2026年9月', citationUnit: '次引用',
-    sectionResearchLabel: '研究', researchTitle: '值得探索的问题<span class="accent-dot">.</span>', researchSubtitle: '从模型内部计算走向物理世界，研究更强、更高效的智能。', researchOneTitle: '模型内部推理', researchOneBody: '通过隐空间递归推理，让模型减少冗长输出并提升推理效率。', researchTwoTitle: '知识与记忆', researchTwoBody: '研究知识组织和记忆增强机制，帮助基础模型处理长上下文与复杂任务。', researchThreeTitle: '物理智能', researchThreeBody: '探索智能系统如何在物理世界中连接感知、推理与行动。',
-    sectionPublicationsLabel: '论文', publicationsTitle: '代表性工作<span class="accent-dot">.</span>', allPublications: '在 Google Scholar 查看全部', penelopeSummary: 'Penelope 将循环计算集中在选定的解码器区间，在不反复运行整个模型、也不生成冗长显式思维链的条件下，实现高效隐空间推理。', traceSummary: '一种免训练方法，从 CLIP 全局表征的形成过程中恢复局部语义证据，服务于密集视觉语言理解。', earlierTitle: '早期服务计算研究', earlierCaption: '部分期刊论文 · 完整列表见 Google Scholar',
-    sectionNewsLabel: '动态', newsTitle: '近期动态<span class="accent-dot">.</span>', newsType: '最新预印本', newsHeading: 'Penelope 已发布在 arXiv。', newsBody: '关于局部化隐空间递归与高效结构化推理的工作已投稿 AAAI 2027。',
+    sectionAboutLabel: '关于', aboutTitle: '以好奇心探索计算<span class="accent-dot">.</span>', aboutLead: '我是南京大学软件学院博士研究生，师从石守谦老师，在仲盛教授团队开展研究。', aboutText: '同时，我与北京大学刘云淮教授团队合作，研究 Physical AI 与具身智能。', affiliationLabel: '所在单位', affiliationValue: '南京大学<br>软件学院', advisorLabel: '导师', advisorValue: '石守谦教授', labLabel: '研究团队', citationLabel: 'GOOGLE SCHOLAR · 2026年9月', citationUnit: '次引用',
+    sectionResearchLabel: '研究', researchTitle: '值得探索的问题<span class="accent-dot">.</span>', researchSubtitle: '从模型内部计算走向物理世界，研究更强、更高效的智能。', researchOneTitle: '模型内部推理', researchOneBody: '探索隐空间递归推理，减少冗长输出与计算开销，提升推理效率。', researchTwoTitle: '知识与记忆', researchTwoBody: '研究知识的组织、保存与调用，支持长上下文推理和复杂任务。', researchThreeTitle: '物理智能', researchThreeBody: '研究具身智能体如何在物理世界中连接感知、推理与行动。',
+    sectionPublicationsLabel: '论文', publicationsTitle: '代表性工作<span class="accent-dot">.</span>', allPublications: '在 Google Scholar 查看全部', penelopeSummary: 'Penelope 将递归计算集中在选定的解码器区间，减少重复执行整个模型和生成冗长推理轨迹的开销，实现高效隐空间推理。', penelopeDate: '2026年7月', penelopeSubmission: '已投稿 AAAI 2027', traceSummary: '一种免训练方法，从 CLIP 全局表征的形成过程中恢复局部语义证据，服务于密集视觉语言理解。', earlierTitle: '早期服务计算研究', earlierCaption: '部分期刊论文 · 完整列表见 Google Scholar',
     sectionContactLabel: '联系', contactTitle: '一起探索新问题<span class="accent-dot">.</span>', contactText: '如果你对模型推理、智能系统或科研合作感兴趣，欢迎联系我。', footerLocation: '在南京写作 · 向更远处思考', backToTop: '返回顶部'
   }
 };
@@ -44,7 +42,7 @@ function renderEarlier(language){
       'CAS Software Eng. 1区':{en:'CAS Software Eng. Zone 1',zh:'中科院软件工程小类1区'}
     };
     const badge=(value,url)=>value?`<a class="rank-badge" href="${url}" target="_blank" rel="noopener noreferrer" title="${language==='zh'?'查看期刊分级来源':'View journal ranking source'}">${safeText(rankNames[value]?.[language]||value)}</a>`:'';
-    return `<article class="earlier-item"><span class="earlier-year">${p.year}</span><div><h4>${safeText(p.title)}</h4><p>${safeText(p.meta)}</p>${badge(p.rank,p.rankUrl)} ${badge(p.rank2,p.rank2Url)} ${badge(p.rank3,p.rank3Url)}</div><a href="${href}" target="_blank" rel="noopener noreferrer" aria-label="Open ${safeText(p.title)}">↗</a></article>`;
+    return `<article class="earlier-item"><span class="earlier-year">${p.year}</span><div><h4>${safeText(p.title)}</h4><p>${safeText(p.meta).replace(/\bY\. Chen\b/g, '<strong>Y. Chen</strong>')}</p>${badge(p.rank,p.rankUrl)} ${badge(p.rank2,p.rank2Url)} ${badge(p.rank3,p.rank3Url)}</div><a href="${href}" target="_blank" rel="noopener noreferrer" aria-label="Open ${safeText(p.title)}">↗</a></article>`;
   }).join('');
 }
 
@@ -67,3 +65,72 @@ try{language=localStorage.getItem('yutong-homepage-language')==='zh'?'zh':'en';}
 applyLanguage(language);
 document.querySelector('#languageSwitch').addEventListener('click',()=>{language=language==='en'?'zh':'en';applyLanguage(language);});
 document.querySelector('#year').textContent=new Date().getFullYear();
+
+const portraitFrame=document.querySelector('.portrait-frame');
+for(const eventName of ['dragstart','contextmenu','selectstart']){
+  portraitFrame.addEventListener(eventName,event=>event.preventDefault());
+}
+
+// Responsive navigation: shared anchors, current section, and keyboard dismissal.
+(() => {
+  const header = document.querySelector('.topbar');
+  const nav = document.querySelector('#mainNav');
+  const menu = document.querySelector('.menu-toggle');
+  const mobile = matchMedia('(max-width: 900px)');
+  let open = false;
+  const labelMenu = () => {
+    const zh = document.documentElement.lang.startsWith('zh');
+    menu.setAttribute('aria-label', open ? (zh ? '关闭导航' : 'Close navigation') : (zh ? '打开导航' : 'Open navigation'));
+    nav.setAttribute('aria-label', zh ? '章节导航' : 'Section navigation');
+  };
+  const setOpen = (value, restoreFocus = false) => {
+    open = value;
+    header.classList.toggle('menu-open', value);
+    menu.setAttribute('aria-expanded', String(value));
+    menu.querySelector('path').setAttribute('d', value ? 'M6 6l12 12M6 18 18 6' : 'M5 8h14M5 16h14');
+    labelMenu();
+    if (restoreFocus) menu.focus({preventScroll:true});
+  };
+  menu.addEventListener('click', () => {
+    setOpen(!open);
+    if (open) nav.querySelector('a').focus({preventScroll:true});
+  });
+  nav.addEventListener('click', event => {
+    const link = event.target.closest('a');
+    if (!link || !open) return;
+    setOpen(false);
+    const target = document.querySelector(link.getAttribute('href'));
+    // Preserve a sensible keyboard reading position after choosing a chapter.
+    target.setAttribute('tabindex', '-1');
+    target.focus({preventScroll:true});
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && open) { setOpen(false, true); event.preventDefault(); }
+  });
+  document.addEventListener('pointerdown', event => {
+    if (open && !header.contains(event.target)) setOpen(false);
+  });
+  document.addEventListener('focusin', event => {
+    if (open && !header.contains(event.target)) setOpen(false);
+  });
+  mobile.addEventListener('change', () => setOpen(false));
+  new MutationObserver(labelMenu).observe(document.documentElement, {attributes:true,attributeFilter:['lang']});
+  const links = [...nav.querySelectorAll('a')];
+  const sections = links.map(link => document.querySelector(link.getAttribute('href')));
+  let frame = 0;
+  const update = () => {
+    frame = 0;
+    header.classList.toggle('is-scrolled', scrollY > 40);
+    let current = -1;
+    sections.forEach((section, index) => { if (section.getBoundingClientRect().top <= 180) current = index; });
+    if (scrollY > 100 && innerHeight + scrollY >= document.documentElement.scrollHeight - 4) current = sections.length - 1;
+    links.forEach((link, index) => {
+      if (index === current) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+  addEventListener('scroll', () => { if (!frame) frame = requestAnimationFrame(update); }, {passive:true});
+  addEventListener('resize', update, {passive:true});
+  new ResizeObserver(update).observe(document.body);
+  labelMenu(); update();
+})();
