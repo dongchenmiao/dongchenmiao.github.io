@@ -66,9 +66,9 @@ applyLanguage(language);
 document.querySelector('#languageSwitch').addEventListener('click',()=>{language=language==='en'?'zh':'en';applyLanguage(language);});
 document.querySelector('#year').textContent=new Date().getFullYear();
 
-const portraitFrame=document.querySelector('.portrait-frame');
+const portraitVisual=document.querySelector('.hero-visual');
 for(const eventName of ['dragstart','contextmenu','selectstart']){
-  portraitFrame.addEventListener(eventName,event=>event.preventDefault());
+  portraitVisual.addEventListener(eventName,event=>event.preventDefault(),true);
 }
 
 // Responsive navigation: shared anchors, current section, and keyboard dismissal.

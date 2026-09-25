@@ -126,5 +126,14 @@
 
 .diagram-topline .diagram-direction{display:inline-flex;align-items:center;justify-content:center;vertical-align:-2px;padding:0 5px}
 .diagram-direction svg{display:block;width:12px;height:12px}
-.portrait-frame,.portrait-frame img{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.hero-visual,.hero-visual *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .portrait-frame img{-webkit-user-drag:none;pointer-events:none}
+.contact-email{align-items:center}
+.contact-email svg{display:block;width:.6em;height:.6em;flex:none}
+
+/* Pair the concise biography with a compact facts grid on desktop. */
+@media(min-width:901px){
+  .about-layout{grid-template-columns:minmax(0,1.6fr) minmax(315px,.8fr);gap:6%}
+  .about-aside{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 22px;align-content:start}
+  .about-aside .aside-item{min-width:0;margin:0;padding:13px 0 0;border-top:1px solid var(--line);border-bottom:0}
+}
