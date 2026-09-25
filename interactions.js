@@ -172,6 +172,7 @@
       pointer.x = pointer.y = -1000; pulses = [];
     }
     syncLoop();
+    document.dispatchEvent(new CustomEvent('yutong:motionchange', { detail: { enabled } }));
   };
   toggle.addEventListener('click', () => {
     enabled = !enabled && !reduced.matches;
