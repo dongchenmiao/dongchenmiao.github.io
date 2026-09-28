@@ -99,6 +99,14 @@ THE SOFTWARE.
 @keyframes lab-loading-sweep{from{transform:translateX(-110%)}to{transform:translateX(290%)}}
 @media(max-width:650px){.lab-loading-panel{padding:28px}.lab-loading-mark{margin-bottom:23px}}
 @media(prefers-reduced-motion:reduce){#lab-loading{transition:none}#lab-loading-fill{transition:none}#lab-loading.is-indeterminate #lab-loading-fill{animation:none;width:55%!important}}
+
+/* Attribution for the user-supplied CC BY 4.0 mascot adaptation. */
+#lab-credits{position:fixed;right:18px;bottom:18px;z-index:25;color:#c8d8d8;font:11px/1.6 -apple-system,BlinkMacSystemFont,sans-serif}
+#lab-credits summary{cursor:pointer;list-style:none;padding:7px 10px;border-radius:8px;background:#102637c9;backdrop-filter:blur(8px)}
+#lab-credits summary::-webkit-details-marker{display:none}
+#lab-credits div{position:absolute;right:0;bottom:38px;width:244px;padding:15px;border:1px solid #a4d2cb44;border-radius:12px;background:#0f2637f5;box-shadow:0 8px 25px #0005}
+#lab-credits a{color:#d9ebdf}#lab-credits small{display:block;margin-top:7px}
+@media(max-width:650px){#lab-credits{right:12px;bottom:max(12px,env(safe-area-inset-bottom))}#lab-credits summary{font-size:10px}}
 </style></head><body><canvas id="scene" role="img" tabindex="0" aria-label="雨夜实验室三维微缩场景。鼠标拖动旋转，滚轮缩放，右键拖动平移；触屏单指旋转，双指缩放或平移。点击左下角入口按钮进入主页，点击自动门可开关；右上角可切换中英文。双击恢复初始视角。方向键旋转，加减键缩放，Home 恢复。"></canvas>
 <a id="entry-hint" href="./home.html" aria-label="点击进入 iTong 的个人主页"><span class="entry-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 4h15v24H5z"/><path d="M12 17h16m-6-6 6 6-6 6"/><circle cx="16" cy="16" r=".7" fill="currentColor" stroke="none"/></svg></span><span class="entry-copy"><span id="entry-hint-title">进入个人主页</span><small id="entry-hint-subtitle">了解我的研究与工作</small></span></a>
 <button id="language-toggle" type="button" aria-label="Switch to English">EN</button>
@@ -107,6 +115,7 @@ THE SOFTWARE.
   <div id="home-loading"><div><strong id="home-loading-title">Opening my homepage…</strong><span id="home-loading-text">If loading takes a while, open directly:</span> <a id="home-loading-link" href="./home.html">Personal homepage</a></div></div>
   <iframe id="home-frame" title="iTong 的个人主页" referrerpolicy="no-referrer" allowfullscreen></iframe>
 </div>
+<details id="lab-credits"><summary>模型署名 · Credits</summary><div><a href="https://makerworld.com.cn/zh/models/1870553-shui-tun-lu-lu" target="_blank" rel="noopener noreferrer">水豚噜噜 — 招招</a><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a><small>基于提供的 3MF 新增配色与尺寸适配。<br>Color and scale adapted for this scene.</small></div></details>
 <div id="lab-loading">
   <div class="lab-loading-panel">
     <span class="lab-loading-mark" aria-hidden="true">YC.</span>
@@ -117,4 +126,4 @@ THE SOFTWARE.
     <div class="lab-loading-footer"><a id="lab-loading-skip" href="./home.html">Open homepage</a><button id="lab-loading-retry" type="button" hidden>Retry</button></div>
   </div>
 </div>
-<noscript>请启用 JavaScript 观看三维场景。<a href="./home.html">直接进入个人主页 / Open homepage</a></noscript><script src="./lab-loader.js?v=f46d3e72" defer></script></body></html>
+<noscript>请启用 JavaScript 观看三维场景。<a href="./home.html">直接进入个人主页 / Open homepage</a></noscript><script src="./lab-loader.js?v=679bd107" defer></script></body></html>
