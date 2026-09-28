@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const sceneUrl = './lab-scene.js?v=4a5ac963';
+  const sceneUrl = './lab-scene.js?v=b580f656';
   const overlay = document.querySelector('#lab-loading');
   const title = document.querySelector('#lab-loading-title');
   const stage = document.querySelector('#lab-loading-stage');
