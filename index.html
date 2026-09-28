@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#101b2a"><title>Yutong Chen · Rainy Lab</title><meta name="description" content="Enter Yutong Chen’s interactive rainy research lab, then explore his research and publications."><link rel="icon" href="./favicon.svg" type="image/svg+xml"><!--
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#101b2a"><title>Yutong Chen · iTong Slab</title><meta name="description" content="Explore iTong Slab, Yutong Chen’s interactive research lab, and discover his research and publications."><link rel="icon" href="./favicon.svg" type="image/svg+xml"><!--
 Project source — MIT License
 MIT License
 
@@ -76,7 +76,7 @@ THE SOFTWARE.
 #home-frame{inset:0;width:100%;height:100%}
 #home-loading{inset:0}
 #language-toggle[hidden]{display:none}
-@media(max-width:650px){#entry-hint{bottom:max(12px,env(safe-area-inset-bottom))}#home-toolbar{inset:auto 12px max(12px,env(safe-area-inset-bottom)) auto;padding:0}#home-back{width:68px;min-height:42px;padding:0;font-size:0}#home-back:after{content:"← LAB";font-size:11px;font-weight:800;letter-spacing:.06em}}
+@media(max-width:650px){#entry-hint{bottom:max(12px,env(safe-area-inset-bottom))}#home-toolbar{inset:auto 12px max(12px,env(safe-area-inset-bottom)) auto;padding:0}#home-back{width:68px;min-height:42px;padding:0;font-size:0}#home-back:after{content:"← " attr(data-short-label);font-size:11px;font-weight:800;letter-spacing:.06em}}
 
 /* Show actual scene transfer progress before the 3D renderer starts. */
 #lab-loading{position:fixed;inset:0;z-index:70;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 50% 45%,#21485a 0,#0c2535 38%,#071728 82%);color:#edf8f2;font:500 14px/1.55 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;transition:opacity .45s ease,visibility .45s ease}
@@ -100,21 +100,21 @@ THE SOFTWARE.
 @media(max-width:650px){.lab-loading-panel{padding:28px}.lab-loading-mark{margin-bottom:23px}}
 @media(prefers-reduced-motion:reduce){#lab-loading{transition:none}#lab-loading-fill{transition:none}#lab-loading.is-indeterminate #lab-loading-fill{animation:none;width:55%!important}}
 </style></head><body><canvas id="scene" role="img" tabindex="0" aria-label="雨夜实验室三维微缩场景。鼠标拖动旋转，滚轮缩放，右键拖动平移；触屏单指旋转，双指缩放或平移。点击左下角入口按钮进入主页，点击自动门可开关；右上角可切换中英文。双击恢复初始视角。方向键旋转，加减键缩放，Home 恢复。"></canvas>
-<a id="entry-hint" href="./home.html" aria-label="点击进入 iTong 的个人主页"><span class="entry-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 4h15v24H5z"/><path d="M12 17h16m-6-6 6 6-6 6"/><circle cx="16" cy="16" r=".7" fill="currentColor" stroke="none"/></svg></span><span class="entry-copy"><span id="entry-hint-title">进入 iTong 的主页</span><small id="entry-hint-subtitle">从雨夜街角走进实验室</small></span></a>
+<a id="entry-hint" href="./home.html" aria-label="点击进入 iTong 的个人主页"><span class="entry-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 4h15v24H5z"/><path d="M12 17h16m-6-6 6 6-6 6"/><circle cx="16" cy="16" r=".7" fill="currentColor" stroke="none"/></svg></span><span class="entry-copy"><span id="entry-hint-title">进入个人主页</span><small id="entry-hint-subtitle">了解我的研究与工作</small></span></a>
 <button id="language-toggle" type="button" aria-label="Switch to English">EN</button>
 <div id="home-overlay" role="dialog" aria-modal="true" aria-label="iTong 的个人主页" aria-hidden="true">
-  <div id="home-toolbar"><button id="home-back" type="button">← 返回雨夜实验室</button><strong>iTong · Lab</strong><a id="home-external" href="./home.html" target="_blank" rel="noopener noreferrer">在新标签打开主页 ↗</a></div>
-  <div id="home-loading"><div><strong id="home-loading-title">Entering iTong's homepage…</strong><span id="home-loading-text">If loading takes a while, open directly:</span> <a id="home-loading-link" href="./home.html">Personal homepage</a></div></div>
+  <div id="home-toolbar"><button id="home-back" data-short-label="实验室" type="button">← 返回iTong的实验室</button><strong>iTong Slab</strong><a id="home-external" href="./home.html" target="_blank" rel="noopener noreferrer">在新标签打开主页 ↗</a></div>
+  <div id="home-loading"><div><strong id="home-loading-title">Opening my homepage…</strong><span id="home-loading-text">If loading takes a while, open directly:</span> <a id="home-loading-link" href="./home.html">Personal homepage</a></div></div>
   <iframe id="home-frame" title="iTong 的个人主页" referrerpolicy="no-referrer" allowfullscreen></iframe>
 </div>
 <div id="lab-loading">
   <div class="lab-loading-panel">
     <span class="lab-loading-mark" aria-hidden="true">YC.</span>
-    <span class="lab-loading-kicker">YUTONG CHEN / INTERACTIVE LAB</span>
-    <h1 id="lab-loading-title">Loading the rainy lab</h1>
-    <div class="lab-loading-meta"><span id="lab-loading-stage" role="status" aria-live="polite">Downloading 3D scene…</span><span id="lab-loading-percent">0%</span></div>
+    <span class="lab-loading-kicker">YUTONG CHEN / iTong Slab</span>
+    <h1 id="lab-loading-title">Welcome to iTong Slab</h1>
+    <div class="lab-loading-meta"><span id="lab-loading-stage" role="status" aria-live="polite">Loading the scene…</span><span id="lab-loading-percent">0%</span></div>
     <div id="lab-loading-progress" class="lab-loading-track" role="progressbar" aria-label="3D scene loading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="lab-loading-fill"></span></div>
-    <div class="lab-loading-footer"><a id="lab-loading-skip" href="./home.html">Go straight to the homepage ↗</a><button id="lab-loading-retry" type="button" hidden>Retry</button></div>
+    <div class="lab-loading-footer"><a id="lab-loading-skip" href="./home.html">Open homepage</a><button id="lab-loading-retry" type="button" hidden>Retry</button></div>
   </div>
 </div>
-<noscript>请启用 JavaScript 观看三维场景。<a href="./home.html">直接进入个人主页 / Open homepage</a></noscript><script src="./lab-loader.js?v=progress-1" defer></script></body></html>
+<noscript>请启用 JavaScript 观看三维场景。<a href="./home.html">直接进入个人主页 / Open homepage</a></noscript><script src="./lab-loader.js?v=01bc191e" defer></script></body></html>

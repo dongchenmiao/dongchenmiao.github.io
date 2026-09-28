@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const sceneUrl = './lab-scene.js?v=235b153a';
+  const sceneUrl = './lab-scene.js?v=d05fb728';
   const overlay = document.querySelector('#lab-loading');
   const title = document.querySelector('#lab-loading-title');
   const stage = document.querySelector('#lab-loading-stage');
@@ -12,24 +12,24 @@
   const retry = document.querySelector('#lab-loading-retry');
   const strings = {
     en: {
-      title: 'Loading the rainy lab',
-      download: 'Downloading 3D scene…',
-      build: 'Building the lab…',
-      render: 'Rendering the first frame…',
+      title: 'Welcome to iTong Slab',
+      download: 'Loading the scene…',
+      build: 'Preparing the lab…',
+      render: 'Almost ready…',
       ready: 'Ready to explore',
       error: 'The 3D scene could not load.',
-      skip: 'Go straight to the homepage ↗',
+      skip: 'Open homepage',
       retry: 'Retry',
       label: '3D scene loading progress'
     },
     zh: {
-      title: '正在加载雨夜实验室',
-      download: '正在下载 3D 场景…',
-      build: '正在构建实验室…',
-      render: '正在渲染首帧…',
-      ready: '可以开始探索了',
+      title: '欢迎来到 iTong Slab',
+      download: '正在加载场景…',
+      build: '正在布置实验室…',
+      render: '即将就绪…',
+      ready: '欢迎探索',
       error: '3D 场景加载失败。',
-      skip: '直接进入个人主页 ↗',
+      skip: '直接进入个人主页',
       retry: '重试',
       label: '3D 场景加载进度'
     }
