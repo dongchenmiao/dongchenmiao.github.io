@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const sceneUrl = './lab-scene.js?v=b580f656';
+  const sceneUrl = './lab-scene.js?v=round5-4';
   const overlay = document.querySelector('#lab-loading');
   const title = document.querySelector('#lab-loading-title');
   const stage = document.querySelector('#lab-loading-stage');
@@ -81,7 +81,13 @@
     retry.hidden = false;
   }
 
+  let sceneReady = false;
   function finish() {
+    if (!sceneReady) return;
+    if (document.querySelector('#home-frame').dataset.ready !== 'true') {
+      setProgress(97, language === 'zh' ? '正在准备网页内容…' : 'Preparing page content…');
+      return;
+    }
     if (ready || failed) return;
     setProgress(100, copy.ready);
     ready = true;
@@ -92,7 +98,8 @@
     }, 120);
   }
 
-  window.addEventListener('lab:ready', finish, { once: true });
+  window.addEventListener('lab:ready', () => { sceneReady=true; finish(); }, { once:true });
+  window.addEventListener('itong:home-ready', finish);
   window.addEventListener('error', () => { if (!ready) fail(); });
   retry.addEventListener('click', () => location.reload());
 

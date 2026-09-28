@@ -1,0 +1,38 @@
+/* A shared palette and quiet architectural details connect the lab and research. */
+:root{--bg:#091422;--bg2:#101e2c;--panel:#132334;--line:#2a3c4c;--text:#eff6f5;--muted:#a5b9c6;--quiet:#829baa;--lime:#a8e6be;--cyan:#79cdd0;--violet:#8dbcbf;--warm:#e6af76}
+body{background:var(--bg)}
+.topbar{background:rgba(9,20,34,.86);border-bottom-color:#bfdad414}
+.brand{align-items:center;gap:15px}.brand-caption{display:flex;flex-direction:column;gap:4px;letter-spacing:.04em;font-size:12px}.brand-caption strong{color:#d2e7e0;font-weight:750}.brand-caption small{font-size:8px;letter-spacing:.16em;font-weight:600;color:var(--quiet)}
+.hero-orb-one{background:#478b8633}.hero-orb-two{background:#e6af7610}
+.hero-name{background-image:linear-gradient(135deg,#fff 25%,#c5dedb 90%)}
+.hero-period{-webkit-text-fill-color:var(--lime)}
+.hero-intro{color:#b5c7d0}
+.portrait-halo{background:radial-gradient(circle,#537f8648 0%,#46706e25 48%,transparent 70%)}
+.portrait-sticker{background:#142b38ed;border-color:#70938f60}.status-dot{background:var(--lime);box-shadow:0 0 13px #a8e6be66}.portrait-sticker-bottom{color:#d3e7e2}
+.top-contact:hover{box-shadow:0 8px 24px #a8e6be25}.button-primary:hover{background:#c0efd0}.reading-progress{box-shadow:0 0 12px #9ee8c660}
+.research-card{--glow-color:158,232,198;background:linear-gradient(145deg,#142736,#101d2d)}.research-card:nth-child(2){--glow-color:118,201,211}.research-card:nth-child(3){--glow-color:230,175,118}
+.research-card .icon-physical{color:var(--warm)}.research-card:nth-child(3) .research-icon{color:var(--warm);border-color:#e6af7630;background:#e6af760a}
+.card-tags span{border-color:#52746765}.research-card:nth-child(3) .card-tags span{border-color:#926d4855}
+.paper-featured{border-color:#4d746d80}.paper-art-penelope{background:radial-gradient(ellipse at center,#2949438c,#14283a 65%)}.paper-status{border-color:#799e7955;color:var(--lime)}
+.contact-glow{background:radial-gradient(ellipse at bottom,#42635b30,transparent 70%)}
+.room-motif{display:inline-block;vertical-align:-4px;width:18px;height:18px;margin-right:9px;color:var(--lime)}
+.paper-number{display:flex;align-items:center}.paper-number .room-motif{vertical-align:0;width:16px;height:16px;margin-right:6px}
+.hero-socials{margin-top:30px}
+.lab-doorway{display:flex;align-items:center;gap:15px;width:100%;max-width:470px;margin-top:27px;padding:9px 14px 9px 9px;border:1px solid #51756f55;border-radius:16px;background:linear-gradient(115deg,#17303d99,#11233366);transition:background .25s,border-color .25s,transform .25s;color:var(--text)}
+.lab-doorway:hover{background:linear-gradient(115deg,#234b4c99,#16313a88);border-color:#9ee8c685;transform:translateX(3px)}
+.lab-doorway-image{display:block;position:relative;flex:none;width:108px;height:72px;overflow:hidden;border-radius:10px;background:#081525;isolation:isolate}
+.lab-doorway-image img{width:100%;height:100%;object-fit:cover;object-position:50% 46%;transform:scale(2.05);transform-origin:50% 46%;pointer-events:none}
+.lab-doorway-copy{display:grid;gap:5px;min-width:0}.lab-doorway-label{font-size:9px;letter-spacing:.12em;color:var(--lime);display:flex;align-items:center;gap:6px;font-weight:700}.lab-signal{width:4px;height:4px;border-radius:50%;background:var(--warm);box-shadow:0 0 8px #e6af7660}.lab-doorway-copy strong{font-size:12px;line-height:1.25;font-weight:650}.lab-doorway-copy small{font-size:10px;color:#92aeb9;line-height:1.35}.lab-doorway-arrow{margin-left:auto;width:20px;height:20px;flex:none;color:var(--lime)}
+.bridge-target{animation:bridge-arrival 1.6s ease-out}.bridge-target .section-heading{animation:bridge-heading-arrival 1.6s ease-out}
+@keyframes bridge-arrival{0%,25%{box-shadow:0 0 0 1px #9ee8c666,0 0 44px #7dcebc18}100%{box-shadow:0 0 0 1px transparent,0 0 44px transparent}}
+@keyframes bridge-heading-arrival{0%,25%{opacity:.65;translate:0 8px}100%{opacity:1;translate:0 0}}
+@media(min-width:901px){.hero{padding-top:65px;padding-bottom:80px;min-height:min(860px,calc(100vh - 84px))}}
+@media(max-width:1150px){.brand-caption{display:flex}.nav{gap:14px}.brand{gap:10px}.brand-caption small{font-size:7px}}
+@media(max-width:900px){.brand-caption strong{font-size:11px}.hero-socials{margin-top:27px}.lab-doorway{max-width:440px;margin-top:23px}}
+@media(max-width:620px){.brand-caption{gap:3px}.brand-caption strong{font-size:10px}.brand-caption small{font-size:6px;letter-spacing:.12em}.brand{gap:9px}.lab-doorway{gap:11px;padding-right:11px;margin-top:23px}.lab-doorway-image{width:85px;height:66px}.lab-doorway-copy strong{font-size:11px}.lab-doorway-copy small{font-size:9px}.lab-doorway-arrow{width:18px}.room-motif{width:16px;height:16px;vertical-align:-3px}}
+@media(max-width:360px){.brand-caption small{display:none}.lab-doorway-copy small{display:none}.lab-doorway-image{width:72px;height:56px}.lab-doorway-copy{gap:6px}}
+@media(prefers-reduced-motion:reduce){.bridge-target,.bridge-target .section-heading{animation:none}.lab-doorway:hover{transform:none}}
+
+.lab-page-paused *,.lab-page-paused *:before,.lab-page-paused *:after{animation-play-state:paused!important}
+
+.friend-links{padding:38px clamp(24px,6.8vw,112px) 24px;background:var(--bg);display:flex;gap:32px;align-items:center;flex-wrap:wrap}.friend-links h2{font:650 18px/1.4 'Manrope',system-ui,sans-serif;color:#b8cdc9;margin:0;letter-spacing:-.02em}.friend-card{display:flex;align-items:center;gap:14px;flex:1;max-width:430px;min-height:78px;border:1px solid #8cb9ac35;border-radius:17px;padding:16px 19px;background:#142a340d;color:var(--text);text-decoration:none;transition:background .2s,border-color .2s}.friend-card:hover{border-color:#a8e6be90;background:#a8e6be09}.friend-monogram{width:42px;height:42px;border:1px solid #80aa9e35;border-radius:12px;display:grid;place-items:center;color:#aad2c3;font:650 21px/1 system-ui,sans-serif;background:#a8e6be06}.friend-copy{display:flex;flex-direction:column;gap:5px}.friend-copy strong{font-size:14px;font-weight:600}.friend-copy small{font-size:11px;color:var(--quiet)}.friend-card svg{width:19px;height:19px;margin-left:auto;color:#9bcbbc;flex-shrink:0}.friend-card:focus-visible{outline:2px solid var(--lime);outline-offset:5px}@media(max-width:620px){.friend-links{display:block;padding-top:29px}.friend-links h2{font-size:16px;margin-bottom:14px}.friend-card{max-width:none;min-height:74px;padding:14px 16px}}@media(prefers-reduced-motion:reduce){.friend-card{transition:none}}.motion-off .friend-card{transition:none}

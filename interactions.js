@@ -96,6 +96,7 @@
   const ctx = canvas.getContext('2d');
   let width = 0, height = 0, particles = [], pulses = [], frame = 0, last = 0;
   let inView = true;
+  let parentVisible = window.parent===window;
   const pointer = { x: -1000, y: -1000 };
   const draw = (advance = false, dt = 1) => {
     if (!ctx) return;
@@ -106,10 +107,10 @@
         p.y = (p.y + p.vy * dt + height) % height;
       }
       const distance = Math.hypot(p.x - pointer.x, p.y - pointer.y);
-      ctx.fillStyle = distance < 150 ? '#b7ff5abf' : '#95bbdf66';
+      ctx.fillStyle = distance < 150 ? '#9ee8c6bf' : '#95bbdf66';
       ctx.beginPath(); ctx.arc(p.x, p.y, distance < 150 ? 2 : 1.3, 0, Math.PI * 2); ctx.fill();
       if (distance < 150) {
-        ctx.strokeStyle = `rgba(183,255,90,${(1 - distance / 150) * .3})`;
+        ctx.strokeStyle = `rgba(158,232,198,${(1 - distance / 150) * .3})`;
         ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(pointer.x, pointer.y); ctx.stroke();
       }
     }
@@ -117,20 +118,20 @@
       const a = particles[i], b = particles[j];
       const distance = Math.hypot(a.x - b.x, a.y - b.y);
       if (distance < 135) {
-        ctx.strokeStyle = `rgba(114,219,240,${(1 - distance / 135) * .16})`;
+        ctx.strokeStyle = `rgba(118,201,211,${(1 - distance / 135) * .16})`;
         ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
       }
     }
     pulses = pulses.filter(p => p.radius < 230);
     for (const p of pulses) {
       if (advance) p.radius += 5 * dt;
-      ctx.strokeStyle = `rgba(183,255,90,${(1 - p.radius / 230) * .4})`;
+      ctx.strokeStyle = `rgba(158,232,198,${(1 - p.radius / 230) * .4})`;
       ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.stroke();
     }
   };
   const tick = time => {
     frame = 0;
-    if (!enabled || document.hidden || !inView) return;
+    if (!enabled || document.hidden || !inView || !parentVisible) return;
     if (!last || time - last >= 32) {
       draw(true, last ? Math.min((time - last) / 33, 2) : 1);
       last = time;
@@ -139,7 +140,7 @@
   };
   const syncLoop = () => {
     cancelAnimationFrame(frame); frame = 0; last = 0;
-    if (enabled && !document.hidden && inView && ctx) frame = requestAnimationFrame(tick);
+    if (enabled && !document.hidden && inView && parentVisible && ctx) frame = requestAnimationFrame(tick);
     else draw();
   };
   const resizeCanvas = () => {
@@ -165,6 +166,7 @@
   }, { passive: true });
   if ('IntersectionObserver' in window) new IntersectionObserver(entries => { inView = entries[0].isIntersecting; syncLoop(); }).observe(hero);
   document.addEventListener('visibilitychange', syncLoop);
+  document.addEventListener('yutong:visibility',event=>{parentVisible=!!event.detail.visible;syncLoop()});
   const applyMotion = () => {
     root.classList.toggle('motion-off', !enabled); labelToggle();
     if (!enabled) {
@@ -182,6 +184,12 @@
   reduced.addEventListener('change', () => {
     enabled = !reduced.matches;
     try { enabled = enabled && localStorage.getItem('yutong-motion') !== 'off'; } catch {}
+    applyMotion();
+  });
+  document.addEventListener('yutong:setmotion', event => {
+    if (typeof event.detail?.enabled !== 'boolean') return;
+    enabled = event.detail.enabled && !reduced.matches;
+    try { localStorage.setItem('yutong-motion', event.detail.enabled ? 'on' : 'off'); } catch {}
     applyMotion();
   });
   resizeCanvas(); applyMotion();

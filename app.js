@@ -1,19 +1,21 @@
 const translations = {
   en: {
+    brandResearchSpace: 'RESEARCH SPACE', labDoorwayTitle: 'Step back into the lab', labDoorwayDetail: 'Explore the space behind the research.',
     latestWork: 'Latest work', navAbout: 'About', navResearch: 'Research', navPublications: 'Publications', navContact: 'Get in touch',
     heroEyebrow: 'PHD RESEARCHER · NANJING UNIVERSITY', heroGreeting: "Hello, I'm", heroIntro: 'I study how foundation models can think more deeply, remember more effectively, and compute more efficiently.', exploreWork: 'Explore my work', emailMe: 'Email me', portraitStatus: 'CURRENTLY EXPLORING', portraitFocus: 'Latent reasoning · Physical AI', portraitLocation: 'Nanjing University · Nanjing, China', scrollCue: 'SCROLL TO EXPLORE',
     sectionAboutLabel: 'ABOUT', aboutTitle: 'Curiosity meets computation<span class="accent-dot">.</span>', aboutLead: "I am a Ph.D. student at the Software Institute, Nanjing University, advised by Prof. Shouqian Shi and working with Prof. Sheng Zhong's research team.", aboutText: 'I also collaborate with Prof. Yunhuai Liu’s team at Peking University on Physical AI and embodied intelligence.', affiliationLabel: 'AFFILIATION', affiliationValue: 'Software Institute<br>Nanjing University', advisorLabel: 'ADVISOR', advisorValue: 'Prof. Shouqian Shi', labLabel: 'RESEARCH GROUP', citationLabel: 'GOOGLE SCHOLAR · SEP 2026', citationUnit: 'citations',
     sectionResearchLabel: 'RESEARCH', researchTitle: 'Questions worth exploring<span class="accent-dot">.</span>', researchSubtitle: 'Building more capable and efficient intelligence, from internal computation to embodied action.', researchOneTitle: 'Reasoning inside models', researchOneBody: 'I investigate latent recurrence to reduce visible reasoning steps and computational cost.', researchTwoTitle: 'Knowledge & memory', researchTwoBody: 'I study how models organize, retain, and retrieve knowledge for long-context reasoning.', researchThreeTitle: 'Physical AI', researchThreeBody: 'I explore how embodied agents connect perception, reasoning, and action in the physical world.',
     sectionPublicationsLabel: 'PUBLICATIONS', publicationsTitle: 'Selected work<span class="accent-dot">.</span>', allPublications: 'All publications on Scholar', penelopeSummary: 'Penelope focuses recurrent computation within a selected decoder interval to support efficient latent reasoning, without repeatedly running the full model or generating lengthy reasoning traces.', penelopeDate: 'JUL 2026', penelopeSubmission: 'Submitted to AAAI 2027', traceSummary: "A training-free approach that reveals local semantic evidence inside CLIP's global representation and uses it for dense vision-language understanding.", earlierTitle: 'Earlier work in service computing', earlierCaption: 'Selected journal papers · Full list on Google Scholar',
-    sectionContactLabel: 'CONTACT', contactTitle: "Let's think together<span class=\"accent-dot\">.</span>", contactText: "Interested in reasoning, intelligent systems, or a research collaboration? I'd be glad to hear from you.", footerLocation: 'Made in Nanjing · Thinking everywhere', backToTop: 'Back to top'
+    sectionContactLabel: 'CONTACT', contactTitle: "Let's think together<span class=\"accent-dot\">.</span>", contactText: "Interested in reasoning, intelligent systems, or a research collaboration? I'd be glad to hear from you.", friendsTitle: 'Friends', footerLocation: 'Made in Nanjing · Thinking everywhere', backToTop: 'Back to top'
   },
   zh: {
+    brandResearchSpace: '个人研究空间', labDoorwayTitle: '回到 iTong 的实验室', labDoorwayDetail: '逛逛研究发生的地方。',
     latestWork: '最新研究', navAbout: '关于', navResearch: '研究', navPublications: '论文', navContact: '联系我',
     heroEyebrow: '南京大学 · 博士研究生', heroGreeting: '你好，我是', heroIntro: '我研究如何让基础模型推理得更深入、记忆得更有效，并以更少的计算完成复杂任务。', exploreWork: '了解我的研究', emailMe: '发送邮件', portraitStatus: '当前研究方向', portraitFocus: '隐空间推理 · 物理智能', portraitLocation: '南京大学 · 中国南京', scrollCue: '向下探索',
     sectionAboutLabel: '关于', aboutTitle: '以好奇心探索计算<span class="accent-dot">.</span>', aboutLead: '我是南京大学软件学院博士研究生，师从石守谦老师，在仲盛教授团队开展研究。', aboutText: '同时，我与北京大学刘云淮教授团队合作，研究 Physical AI 与具身智能。', affiliationLabel: '所在单位', affiliationValue: '南京大学<br>软件学院', advisorLabel: '导师', advisorValue: '石守谦教授', labLabel: '研究团队', citationLabel: 'GOOGLE SCHOLAR · 2026年9月', citationUnit: '次引用',
     sectionResearchLabel: '研究', researchTitle: '值得探索的问题<span class="accent-dot">.</span>', researchSubtitle: '从模型内部计算走向物理世界，研究更强、更高效的智能。', researchOneTitle: '模型内部推理', researchOneBody: '探索隐空间递归推理，减少冗长输出与计算开销，提升推理效率。', researchTwoTitle: '知识与记忆', researchTwoBody: '研究知识的组织、保存与调用，支持长上下文推理和复杂任务。', researchThreeTitle: '物理智能', researchThreeBody: '研究具身智能体如何在物理世界中连接感知、推理与行动。',
     sectionPublicationsLabel: '论文', publicationsTitle: '代表性工作<span class="accent-dot">.</span>', allPublications: '在 Google Scholar 查看全部', penelopeSummary: 'Penelope 将递归计算集中在选定的解码器区间，减少重复执行整个模型和生成冗长推理轨迹的开销，实现高效隐空间推理。', penelopeDate: '2026年7月', penelopeSubmission: '已投稿 AAAI 2027', traceSummary: '一种免训练方法，从 CLIP 全局表征的形成过程中恢复局部语义证据，服务于密集视觉语言理解。', earlierTitle: '早期服务计算研究', earlierCaption: '部分期刊论文 · 完整列表见 Google Scholar',
-    sectionContactLabel: '联系', contactTitle: '一起探索新问题<span class="accent-dot">.</span>', contactText: '如果你对模型推理、智能系统或科研合作感兴趣，欢迎联系我。', footerLocation: '在南京写作 · 向更远处思考', backToTop: '返回顶部'
+    sectionContactLabel: '联系', contactTitle: '一起探索新问题<span class="accent-dot">.</span>', contactText: '如果你对模型推理、智能系统或科研合作感兴趣，欢迎联系我。', friendsTitle: '友情链接', footerLocation: '在南京写作 · 向更远处思考', backToTop: '返回顶部'
   }
 };
 
@@ -63,7 +65,7 @@ function applyLanguage(language){
 let language='en';
 try{language=localStorage.getItem('yutong-homepage-language')==='zh'?'zh':'en';}catch{}
 applyLanguage(language);
-document.querySelector('#languageSwitch').addEventListener('click',()=>{language=language==='en'?'zh':'en';applyLanguage(language);});
+document.querySelector('#languageSwitch').addEventListener('click',()=>{language=language==='en'?'zh':'en';applyLanguage(language);document.dispatchEvent(new CustomEvent('itong:languagechange',{detail:{language}}));});
 document.querySelector('#year').textContent=new Date().getFullYear();
 
 const portraitVisual=document.querySelector('.hero-visual');

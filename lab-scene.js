@@ -4218,7 +4218,7 @@ function createLulu(s,x,z){
  add(group);return group;
 }
 
-function Pm(s){let{THREE:t,group:e,box:n,cyl:i,sphere:r,tube:o,label:a,plane:l,mat:c,add:u}=s,h="#283443",d="#e4e5dd",f="#81969c",g="#263d4c",_="#ffe6a3",m=(V,lt=1)=>({emissive:V,emissiveIntensity:lt}),p=(V,lt,ft,W,J,I,Pt=0,ct=0)=>{let Mt=new t.Mesh(new t.TorusGeometry(V,lt,6,28),c(I));return Mt.position.set(ft,W,J),Mt.rotation.set(ct,Pt,0),u(Mt),Mt},x=(V,lt,ft,W,J)=>o([V,lt],ft,W,J),v=(V,lt,ft,W,J,I,Pt={})=>a(V,lt,ft,W,J,I,Pt),y=-4.65,R=2.02;createLulu(s,y,R);let E=4.5,C=.82,b=-.48,M=-2;for(let V of[b,M]){p(.48,.048,E,C,V,"#273844",Math.PI/2),p(.425,.018,E+.007,C,V,"#b8c1ba",Math.PI/2);for(let W=0;W<7;W++){let J=W*Math.PI/7;x([E+.022,C+Math.cos(J)*.405,V+Math.sin(J)*.405],[E+.022,C-Math.cos(J)*.405,V-Math.sin(J)*.405],.007,"#bac8c6")}let lt=i(.055,.055,.14,E,C,V,"#a1afab");lt.rotation.z=Math.PI/2;let ft=[];for(let W=0;W<10;W++){let J=-1.13+W*2.26/9;ft.push([E,C+Math.cos(J)*.545,V+Math.sin(J)*.545])}o(ft,.033,"#b7d1c2")}let D=[E,C,M],G=[E,C,b],k=[E,.76,-1.3],X=[E-.07,1.52,-1.58],et=[E-.07,1.46,-.66],L="#7eb9aa";for(let[V,lt]of[[D,k],[k,X],[X,D],[X,et],[et,k],[et,G]])x(V,lt,.036,L);x([E-.07,1.46,-.66],[E-.08,1.83,-.78],.022,f),o([[E-.34,1.86,-.7],[E-.27,1.86,-.82],[E+.13,1.86,-.82],[E+.2,1.86,-.7]],.025,f),x([E-.35,1.86,-.7],[E-.35,1.86,-.54],.041,"#39454a"),x([E+.2,1.86,-.7],[E+.2,1.86,-.54],.041,"#39454a"),n(.3,.075,.31,E-.065,1.62,-1.64,"#543f40"),x(X,[E-.065,1.63,-1.64],.028,f),p(.14,.024,E+.06,.77,-1.3,"#bac3bb",Math.PI/2),o([[E+.09,.77,-1.3],[E+.2,.7,-1.33],[E+.29,.7,-1.33]],.018,f),n(.17,.04,.12,E+.3,.7,-1.33,"#3c4445"),o([[E+.076,.84,-1.27],[E+.076,.9,-1.98],[E+.076,.76,-2],[E+.076,.65,-1.3]],.009,"#626f73"),x([E,.81,-1.3],[E+.3,.33,-1.45],.015,f),n(.35,.034,.59,E,1.35,-2,"#829994"),x([E+.14,1.35,-2.1],[E+.09,.86,-2],.013,f),x([E-.14,1.35,-2.1],[E-.09,.86,-2],.013,f),n(.44,.025,.38,E-.055,1.35,-.34,"#8c9e9b");for(let V of[1.44,1.6])o([[E-.28,V,-.54],[E+.17,V,-.54],[E+.17,V,-.12],[E-.28,V,-.12],[E-.28,V,-.54]],.012,"#aec1b8");for(let V=0;V<4;V++){let lt=E-.26+V*.14;x([lt,1.36,-.12],[lt,1.61,-.12],.008,"#9aaba6")}v("\u25CF",.12,.12,E-.05,1.54,-.104,{fg:"#e6c482",bg:"#8a8e82"});let $=3.35,z=2.15;n(.53,.08,.45,$,.36,z,"#657a80");for(let V of[-.23,.23])for(let lt of[-.18,.18])i(.014,.014,.6,$+V,.67,z+lt,"#a8b6b6");for(let V of[.57,.93])o([[$-.25,V,z-.21],[$+.25,V,z-.21],[$+.25,V,z+.21],[$-.25,V,z+.21],[$-.25,V,z-.21]],.017,"#8fa5aa");let at=[[-.14,0,"#627b98"],[.09,.09,"#bb827f"],[.13,-.12,"#b5c8c8"]];for(let V=0;V<at.length;V++){let[lt,ft,W]=at[V],J=$+lt,I=z+ft;i(.035,.09,.56,J,.87,I,W),x([J,.51,I],[J,1.43,I],.011,"#aab5b4"),o([[J,1.42,I],[J,1.52,I],[J+.06,1.56,I],[J+.115,1.51,I],[J+.115,1.45,I]],.022,V===1?"#e9b7a5":"#e2e2d8"),i(.064,.064,.035,J,.98,I,V===1?"#a36c6b":"#6c8390")}let ut=["#7da298","#809bb6","#c4ae86"];for(let V=0;V<3;V++){let lt=ut[V],W=-3.7-V*.63;n(.57,.77,.55,4.35,.73,W,"#b8c5bd"),n(.63,.13,.61,4.35,1.16,W,lt),n(.024,.22,.26,4.646,1,W,"#334c50"),n(.49,.065,.48,4.35,.375,W,"#788e89")}i(.18,.23,.12,5.22,.37,3.02,"#3f535b"),i(.076,.104,5.61,5.22,3.18,3.02,"#3e5364"),o([[5.22,5.91,3.02],[5.22,6.13,3.02],[5.22,6.26,3.24],[5.22,6.26,3.7]],.068,"#455c6b"),n(.5,.13,.62,5.22,6.23,3.66,"#314a5a"),n(.38,.045,.49,5.22,6.147,3.66,_,m(_,2.2)),n(.18,.21,.14,5.22,4.01,3.02,"#5b707a");let dt=5.31,B=1.94;i(.033,.033,2.4,dt,1.53,B,"#869ba0");let st=new t.Mesh(new t.CylinderGeometry(.33,.33,.045,40),c("#d8dfcf"));st.position.set(dt,2.47,B),st.rotation.x=Math.PI/2,u(st);let N=new t.Mesh(new t.CylinderGeometry(.292,.292,.051,40),c("#34638c"));N.position.set(dt,2.47,B+.008),N.rotation.x=Math.PI/2,u(N),o([[dt-.16,2.47,B+.049],[dt+.15,2.47,B+.049]],.023,"#eef0dd"),o([[dt+.035,2.59,B+.049],[dt+.16,2.47,B+.049],[dt+.035,2.35,B+.049]],.023,"#eef0dd");for(let V of[-1.96,-.25,1.46])i(.048,.058,.61,V,.64,3.54,"#b6c8c5"),r(.06,V,.96,3.54,"#d6dfd0");n(3.46,.14,.075,-.25,.79,3.54,"#c5d1c7"),n(3.46,.036,.086,-.25,.86,3.54,"#dce2d5");for(let V of[-1.91,1.41])n(.1,.085,.015,V,.79,3.59,"#e9bb68",m("#e9bb68",.2));for(let V of[-3.05,-1.92,-.79])i(.045,.058,.57,5.58,.615,V,"#abbdbb"),r(.053,5.58,.917,V,"#ccd6c9");n(.072,.13,2.38,5.58,.77,-1.92,"#bbcfc7");for(let V of[-3.02,-.82])n(.014,.075,.1,5.625,.77,V,"#dbb976");let Z=[2.85,-7.02];for(let V=0;V<2;V++){let ft=Z[V],W=V===0?7.55:7.27;i(.27,.32,.285,-7.62,.183,ft,"#627681"),i(.15,.19,W,-7.62,.3+W/2,ft,"#778888"),i(.177,.191,.76,-7.62,.69,ft,"#596771"),n(1.72,.12,.12,-7.62,W-.1,ft,"#425865"),n(1.46,.1,.12,-7.62,W-.77,ft,"#526675");for(let J of[-.65,0,.65])i(.025,.025,.3,-7.62+J,W+.04,ft,"#adb8b1"),i(.075,.065,.115,-7.62+J,W+.18,ft,"#d1d9cd"),i(.061,.056,.06,-7.62+J,W+.24,ft,"#a0b3ad");n(.09,.85,.11,-7.62+.13,2.7,ft,"#8b9b96"),n(.3,.7,.047,-7.62,1.07,ft+.179,"#d4b976");for(let J=0;J<3;J++){let I=n(.315,.055,.019,-7.62,.85+J*.18,ft+.21,"#39434a");I.rotation.z=-.38}V===0&&(i(.22,.22,.69,-7.62+.36,6.53,ft,"#8b9fa0"),i(.235,.235,.075,-7.62+.36,6.91,ft,"#c1cbbe"),o([[-7.62+.36,6.94,ft],[-7.62+.44,7.12,ft],[-7.62+.64,7.29,ft]],.015,"#384755"),n(.31,.41,.23,-7.62,4.6,ft+.19,"#6e8387"))}for(let V of[-.65,0,.65])o([[-7.62+V,7.8,2.85],[-7.62+V,7.19,.4],[-7.62+V,6.97,-2.1],[-7.62+V,7.15,-4.6],[-7.62+V,7.52,-7.02]],.014,"#2c3e52");o([[-7.62,6.75,2.85],[-7.65,6,-1.8],[-7.62,6.47,-7.02]],.023,"#344451"),o([[-7.62,6.87,2.85],[-7.16,6,.2],[-5.68,4.15,-1.25]],.017,"#3a4e5c");let tt=-6.64,j=-.28;for(let V of[tt-.52,tt+.52])n(.06,2.055,.07,V,1.073,j,"#677f80");n(1.27,1.12,.1,tt,1.76,j,"#6f8684"),n(1.12,.95,.027,tt,1.76,j+.066,"#c9c3a5"),n(1.43,.08,.32,tt,2.38,j,"#477278");for(let V of[-.4,.4])r(.021,tt+V,2.16,j+.12,"#b65455");for(let V=0;V<2;V++){let lt=-5.03+V*1.35,ft=-6.26;n(1.22,.25,.76,lt,.17,ft,"#6f8186"),n(1.04,.7,.53,lt,.73,ft,"#bac9c3"),n(1.08,.055,.59,lt,1.108,ft,"#d2d7c9");for(let J of[-.35,.35])n(.14,.12,.48,lt+J,.34,ft,"#7d918e");p(.232,.027,lt-.17,.75,ft-.28,"#859895"),p(.175,.013,lt-.17,.75,ft-.296,"#7c9090");let W=new t.Mesh(new t.CircleGeometry(.205,24),c("#627b7e"));W.rotation.y=Math.PI,W.position.set(lt-.17,.75,ft-.286),u(W);for(let J=0;J<6;J++){let I=J*Math.PI/3;x([lt-.17+Math.sin(I)*.22,.75+Math.cos(I)*.22,ft-.307],[lt-.17-Math.sin(I)*.22,.75-Math.cos(I)*.22,ft-.307],.007,"#b0bdb6")}for(let J=0;J<4;J++)n(.17,.02,.023,lt+.32,.67+J*.075,ft-.284,"#849896");o([[lt+.51,.53,ft],[lt+.7,.48,ft],[lt+.71,1.47,-5.67]],.035,"#a6b9b0")}for(let V=0;V<3;V++){let lt=-6.67+(V===2?.53:0),ft=.195+(V===1?.31:0),W=-3.76;n(.48,.29,.54,lt,ft,W,V===2?"#a98659":"#658f82"),n(.5,.035,.56,lt,ft+.16,W,V===2?"#c0a16f":"#92af97");for(let J of[-.075,.06])n(.39,.035,.015,lt,ft+J,W+.278,V===2?"#685d46":"#466b63");n(.17,.065,.013,lt,ft+.06,W+.291,"#293f43")}o([[-5.82,.48,-4.92],[-5.82,1.15,-4.92],[-6.02,1.15,-4.92]],.025,"#7a9999");let xt=i(.07,.07,.024,-5.91,1.2,-4.92,"#779594");return xt.rotation.z=Math.PI/2,{lampPosition:[5.22,6.06,3.66],mascotLightPosition:[y-.7,3.25,R+.9]}}function Im(s){let{THREE:t,box:e,cyl:n,mat:i,add:r}=s,o=.062,a=.304,l="#6e7f89",c="#bfc9bf",u="#192c3a";function h(L,$,z=1){let at=new t.BufferGeometry;at.setAttribute("position",new t.Float32BufferAttribute(L.flat(),3));let ut=new t.LineBasicMaterial({color:$,transparent:z<1,opacity:z,depthWrite:!1}),dt=new t.LineSegments(at,ut);return r(dt),dt}function d(L,$,z,at={}){let ut=new t.InstancedMesh(L,i($,at),z.length),dt=new t.Object3D;return z.forEach((B,st)=>{dt.position.set(B.x,B.y,B.z),dt.rotation.set(B.rx||0,B.ry||0,B.rz||0),dt.scale.set(B.sx||1,B.sy||1,B.sz||1),dt.updateMatrix(),ut.setMatrixAt(st,dt.matrix)}),ut.castShadow=!1,ut.receiveShadow=!0,r(ut),ut}let f=[[-5.9,1.4],[3.7,1.4],[3.7,-6.4],[5.8,-6.4],[5.8,3.7],[-5.9,3.7]],g=new t.Shape;f.forEach(([L,$],z)=>z?g.lineTo(L,-$):g.moveTo(L,-$)),g.closePath();let _=new t.ExtrudeGeometry(g,{depth:.255,bevelEnabled:!1});_.rotateX(-Math.PI/2);let m=new t.Mesh(_,[i(l,{roughness:.64}),i("#526571",{roughness:.8})]);m.position.y=.045,m.receiveShadow=!0,m.castShadow=!0,r(m);let p=[];for(let L=-5.9;L<=5.81;L+=.65)p.push([L,a,1.41],[L,a,3.7]),p.push([L,.07,3.705],[L,.3,3.705]);for(let L=1.4;L<=3.71;L+=.575)p.push([-5.9,a,L],[5.8,a,L]);for(let L=3.7;L<=5.81;L+=.7)p.push([L,a,-6.4],[L,a,1.4]);for(let L=-6.4;L<=3.71;L+=.65)L<1.4&&p.push([3.7,a,L],[5.8,a,L]),p.push([5.805,.07,L],[5.805,.3,L]);h(p,"#344c5c",.38),e(11.7,.012,.11,-.05,.306,3.645,"#94a5aa",{roughness:.55}),e(.11,.012,10.1,5.745,.306,-1.35,"#8b9ea4",{roughness:.55}),e(.11,.012,2.3,-5.845,.306,2.55,"#8499a0");let x=[];for(let L=-5.9;L<=5.81;L+=.65)x.push([L,.314,3.587],[L,.314,3.701]);for(let L=-6.4;L<=3.71;L+=.65)x.push([5.687,.314,L],[5.801,.314,L]);h(x,"#324b57",.65);let v=[];for(let L=-.65;L<=3.42;L+=.34)v.push({x:L,y:.314,z:3.18});for(let L=1.75;L<=2.84;L+=.34)v.push({x:1.73,y:.314,z:L});d(new t.BoxGeometry(.316,.02,.316),"#bbac63",v,{roughness:.7});let y=[],R=[];v.forEach(L=>{if(Math.abs(L.x-1.73)<.05&&L.z>3)for(let $=-1;$<=1;$++)for(let z=-1;z<=1;z++)R.push({x:L.x+$*.083,y:.331,z:L.z+z*.083});else for(let $=-1;$<=1;$++)y.push({x:L.x+(L.z<3?$*.078:0),y:.332,z:L.z+(L.z<3?0:$*.078),ry:L.z<3?Math.PI/2:0})}),d(new t.BoxGeometry(.242,.018,.021),"#d0bf73",y,{roughness:.62}),R.length&&d(new t.CylinderGeometry(.021,.025,.013,6),"#d0bf73",R),e(11.65,.008,.085,-.025,.052,3.755,"#182d3a",{roughness:.24}),e(.085,.008,10.1,5.855,.052,-1.35,"#182d3a",{roughness:.24});let w=[[-5.13,3.79,!1],[-1.13,3.79,!1],[4.85,3.79,!1],[5.89,-5.5,!0],[5.89,-1.6,!0],[5.89,2.55,!0]],E=[];w.forEach(([L,$,z])=>{e(z?.23:.67,.016,z?.67:.23,L,.06,$,"#111f2b",{roughness:.3}),e(z?.26:.72,.008,z?.72:.035,L,.065,$+(z?0:.125),"#5a7079",{metalness:.6,roughness:.3});for(let at=-4;at<=4;at++)E.push({x:L+(z?0:at*.068),y:.073,z:$+(z?at*.068:0),ry:z?Math.PI/2:0})}),d(new t.BoxGeometry(.024,.014,.215),"#506a74",E,{metalness:.65,roughness:.28});let C=new t.MeshStandardMaterial({color:c,roughness:.24,metalness:.12,transparent:!0,opacity:.83,polygonOffset:!0,polygonOffsetFactor:-2});function b(L,$,z,at,ut=C,dt=o){let B=new t.Mesh(new t.PlaneGeometry(L,$),ut);return B.rotation.x=-Math.PI/2,B.position.set(z,dt,at),B.receiveShadow=!0,r(B),B}for(let L=4.14;L<8.7;L+=.72)b(3.4,.39,3,L);b(.075,4,-5.8,6.5),b(.075,4,-2.5,6.5),b(3.3,.075,-4.15,4.5),b(.64,.075,-5.48,8.5),b(.64,.075,-2.82,8.5),e(1.52,.15,.23,-4.15,.127,4.94,"#7d8989",{roughness:.85}),e(.24,.026,.15,-4.65,.211,4.94,"#bfb98e",{roughness:.5}),e(.24,.026,.15,-3.65,.211,4.94,"#bfb98e",{roughness:.5});function M(L,$,z,at,ut,dt=!1){let B=document.createElement("canvas");B.width=256,B.height=dt?768:256;let st=B.getContext("2d");st.fillStyle="#c5d0c9",st.textAlign="center",st.textBaseline="middle",st.font=`800 ${dt?206:222}px "Yu Gothic", "Hiragino Kaku Gothic ProN", Arial, sans-serif`,dt?[...L].forEach((tt,j)=>st.fillText(tt,128,138+j*244)):st.fillText(L,128,139);let N=new t.CanvasTexture(B);N.colorSpace=t.SRGBColorSpace;let Z=new t.MeshStandardMaterial({map:N,transparent:!0,opacity:.69,roughness:.3,depthWrite:!1,polygonOffset:!0,polygonOffsetFactor:-3,side:t.DoubleSide});return b($,z,at,ut,Z,.068)}M("P",.84,.84,-4.15,7.33),b(2.35,.18,7.32,4.12);let D=new t.MeshStandardMaterial({color:"#ad8850",transparent:!0,opacity:.63,roughness:.28});b(5.8,.052,-5.62,8.71,D),b(.052,7.9,8.71,-1.15,D),n(.43,.43,.027,-.82,.061,6.26,"#243e4b",{roughness:.27,metalness:.5,radialSegments:48}),n(.383,.383,.011,-.82,.079,6.26,"#39525d",{roughness:.3,metalness:.4,radialSegments:48});let G=[];for(let L=-.28;L<=.281;L+=.08){let $=Math.sqrt(.12249999999999998-L*L);G.push([-.82+L,.087,6.26-$],[-.82+L,.087,6.26+$]),G.push([-.82-$,.087,6.26+L],[-.82+$,.087,6.26+L])}h(G,"#182c3a",.95),e(.085,.006,.026,-.82,.087,6.54,"#0f2330"),e(.085,.006,.026,-.82,.087,5.98,"#0f2330");let k=[[-7.25,6.35,1.1,.61,1.2],[-6.55,4.18,1.3,.32,2.4],[-4.1,8.35,.97,.29,3.7],[-1,8.06,1.48,.45,1.8],[1.3,5.15,.69,.33,.1],[5.39,7.78,.65,.77,2.7],[6.88,1.05,.57,1.17,1.9],[7.8,-3.73,.42,1.3,3],[-7.39,-.95,.74,1.49,1],[-7.8,-5.49,.53,.75,2.9],[2.67,-7.4,1.32,.62,1.6],[-2.28,-7.8,1.13,.54,3.1]],X=new t.MeshBasicMaterial({color:"#557e91",transparent:!0,opacity:.075,depthWrite:!1,polygonOffset:!0,polygonOffsetFactor:-1}),et=[];return k.forEach(([L,$,z,at,ut],dt)=>{let B=new t.Shape,st=[],N=30;for(let tt=0;tt<N;tt++){let j=tt/N*Math.PI*2,xt=1+.13*Math.sin(j*3+ut)+.06*Math.sin(j*7+ut*2);st.push([Math.cos(j)*z*xt,Math.sin(j)*at*xt])}st.forEach(([tt,j],xt)=>xt?B.lineTo(tt,-j):B.moveTo(tt,-j)),B.closePath();let Z=new t.Mesh(new t.ShapeGeometry(B),X);Z.rotation.x=-Math.PI/2,Z.position.set(L,.056+dt*2e-5,$),r(Z);for(let tt=2;tt<8;tt++){let j=st[tt],xt=st[tt+1];et.push([L+j[0],.063,$+j[1]],[L+xt[0],.063,$+xt[1]])}}),h(et,"#6b97a7",.27),h([[-8.67,.063,2.3],[-7.96,.063,2.17],[-7.96,.063,2.17],[-7.34,.063,2.46],[-7.34,.063,2.46],[-6.85,.063,2.43],[6.67,.063,-6.87],[7.55,.063,-6.43],[7.55,.063,-6.43],[8.16,.063,-6.62],[-5.57,.063,-7.48],[-4.92,.063,-7.29],[-4.92,.063,-7.29],[-4.21,.063,-7.37]],u,.78),{pavement:m,roadLevel:o,sidewalkLevel:a}}var xr=class s extends $t{constructor(t,e={}){super(t),this.isReflector=!0,this.type="Reflector",this.camera=new pe;let n=this,i=e.color!==void 0?new mt(e.color):new mt(8355711),r=e.textureWidth||512,o=e.textureHeight||512,a=e.clipBias||0,l=e.shader||s.ReflectorShader,c=e.multisample!==void 0?e.multisample:4,u=new Qe,h=new A,d=new A,f=new A,g=new Ft,_=new A(0,0,-1),m=new Kt,p=new A,x=new A,v=new Kt,y=new Ft,R=this.camera,w=new Me(r,o,{samples:c,type:nn}),E=new de({name:l.name!==void 0?l.name:"unspecified",uniforms:dn.clone(l.uniforms),fragmentShader:l.fragmentShader,vertexShader:l.vertexShader});E.uniforms.tDiffuse.value=w.texture,E.uniforms.color.value=i,E.uniforms.textureMatrix.value=y,this.material=E,this.onBeforeRender=function(C,b,M){if(d.setFromMatrixPosition(n.matrixWorld),f.setFromMatrixPosition(M.matrixWorld),g.extractRotation(n.matrixWorld),h.set(0,0,1),h.applyMatrix4(g),p.subVectors(d,f),p.dot(h)>0)return;p.reflect(h).negate(),p.add(d),g.extractRotation(M.matrixWorld),_.set(0,0,-1),_.applyMatrix4(g),_.add(f),x.subVectors(d,_),x.reflect(h).negate(),x.add(d),R.position.copy(p),R.up.set(0,1,0),R.up.applyMatrix4(g),R.up.reflect(h),R.lookAt(x),R.far=M.far,R.updateMatrixWorld(),R.projectionMatrix.copy(M.projectionMatrix),y.set(.5,0,0,.5,0,.5,0,.5,0,0,.5,.5,0,0,0,1),y.multiply(R.projectionMatrix),y.multiply(R.matrixWorldInverse),y.multiply(n.matrixWorld),u.setFromNormalAndCoplanarPoint(h,d),u.applyMatrix4(R.matrixWorldInverse),m.set(u.normal.x,u.normal.y,u.normal.z,u.constant);let D=R.projectionMatrix;v.x=(Math.sign(m.x)+D.elements[8])/D.elements[0],v.y=(Math.sign(m.y)+D.elements[9])/D.elements[5],v.z=-1,v.w=(1+D.elements[10])/D.elements[14],m.multiplyScalar(2/m.dot(v)),D.elements[2]=m.x,D.elements[6]=m.y,D.elements[10]=m.z+1-a,D.elements[14]=m.w,n.visible=!1;let G=C.getRenderTarget(),k=C.xr.enabled,X=C.shadowMap.autoUpdate;C.xr.enabled=!1,C.shadowMap.autoUpdate=!1,C.setRenderTarget(w),C.state.buffers.depth.setMask(!0),C.autoClear===!1&&C.clear(),C.render(b,R),C.xr.enabled=k,C.shadowMap.autoUpdate=X,C.setRenderTarget(G);let et=M.viewport;et!==void 0&&C.state.viewport(et),n.visible=!0},this.getRenderTarget=function(){return w},this.dispose=function(){w.dispose(),n.material.dispose()}}};xr.ReflectorShader={name:"ReflectorShader",uniforms:{color:{value:null},tDiffuse:{value:null},textureMatrix:{value:null}},vertexShader:`
+function Pm(s){let{THREE:t,group:e,box:n,cyl:i,sphere:r,tube:o,label:a,plane:l,mat:c,add:u}=s,h="#283443",d="#e4e5dd",f="#81969c",g="#263d4c",_="#ffe6a3",m=(V,lt=1)=>({emissive:V,emissiveIntensity:lt}),p=(V,lt,ft,W,J,I,Pt=0,ct=0)=>{let Mt=new t.Mesh(new t.TorusGeometry(V,lt,6,28),c(I));return Mt.position.set(ft,W,J),Mt.rotation.set(ct,Pt,0),u(Mt),Mt},x=(V,lt,ft,W,J)=>o([V,lt],ft,W,J),v=(V,lt,ft,W,J,I,Pt={})=>a(V,lt,ft,W,J,I,Pt),y=-4.65,R=2.02;createLulu(s,y,R);let E=4.5,C=.82,b=-.48,M=-2;for(let V of[b,M]){p(.48,.048,E,C,V,"#273844",Math.PI/2),p(.425,.018,E+.007,C,V,"#b8c1ba",Math.PI/2);for(let W=0;W<7;W++){let J=W*Math.PI/7;x([E+.022,C+Math.cos(J)*.405,V+Math.sin(J)*.405],[E+.022,C-Math.cos(J)*.405,V-Math.sin(J)*.405],.007,"#bac8c6")}let lt=i(.055,.055,.14,E,C,V,"#a1afab");lt.rotation.z=Math.PI/2;let ft=[];for(let W=0;W<10;W++){let J=-1.13+W*2.26/9;ft.push([E,C+Math.cos(J)*.545,V+Math.sin(J)*.545])}o(ft,.033,"#b7d1c2")}let D=[E,C,M],G=[E,C,b],k=[E,.76,-1.3],X=[E-.07,1.52,-1.58],et=[E-.07,1.46,-.66],L="#7eb9aa";for(let[V,lt]of[[D,k],[k,X],[X,D],[X,et],[et,k],[et,G]])x(V,lt,.036,L);x([E-.07,1.46,-.66],[E-.08,1.83,-.78],.022,f),o([[E-.34,1.86,-.7],[E-.27,1.86,-.82],[E+.13,1.86,-.82],[E+.2,1.86,-.7]],.025,f),x([E-.35,1.86,-.7],[E-.35,1.86,-.54],.041,"#39454a"),x([E+.2,1.86,-.7],[E+.2,1.86,-.54],.041,"#39454a"),n(.3,.075,.31,E-.065,1.62,-1.64,"#543f40"),x(X,[E-.065,1.63,-1.64],.028,f),p(.14,.024,E+.06,.77,-1.3,"#bac3bb",Math.PI/2),o([[E+.09,.77,-1.3],[E+.2,.7,-1.33],[E+.29,.7,-1.33]],.018,f),n(.17,.04,.12,E+.3,.7,-1.33,"#3c4445"),o([[E+.076,.84,-1.27],[E+.076,.9,-1.98],[E+.076,.76,-2],[E+.076,.65,-1.3]],.009,"#626f73"),x([E,.81,-1.3],[E+.3,.33,-1.45],.015,f),n(.35,.034,.59,E,1.35,-2,"#829994"),x([E+.14,1.35,-2.1],[E+.09,.86,-2],.013,f),x([E-.14,1.35,-2.1],[E-.09,.86,-2],.013,f),n(.44,.025,.38,E-.055,1.35,-.34,"#8c9e9b");for(let V of[1.44,1.6])o([[E-.28,V,-.54],[E+.17,V,-.54],[E+.17,V,-.12],[E-.28,V,-.12],[E-.28,V,-.54]],.012,"#aec1b8");for(let V=0;V<4;V++){let lt=E-.26+V*.14;x([lt,1.36,-.12],[lt,1.61,-.12],.008,"#9aaba6")}v("\u25CF",.12,.12,E-.05,1.54,-.104,{fg:"#e6c482",bg:"#8a8e82"});let $=3.35,z=2.15;n(.53,.08,.45,$,.36,z,"#657a80");for(let V of[-.23,.23])for(let lt of[-.18,.18])i(.014,.014,.6,$+V,.67,z+lt,"#a8b6b6");for(let V of[.57,.93])o([[$-.25,V,z-.21],[$+.25,V,z-.21],[$+.25,V,z+.21],[$-.25,V,z+.21],[$-.25,V,z-.21]],.017,"#8fa5aa");let at=[[-.14,0,"#627b98"],[.09,.09,"#bb827f"],[.13,-.12,"#b5c8c8"]];for(let V=0;V<at.length;V++){let[lt,ft,W]=at[V],J=$+lt,I=z+ft;i(.035,.09,.56,J,.87,I,W),x([J,.51,I],[J,1.43,I],.011,"#aab5b4"),o([[J,1.42,I],[J,1.52,I],[J+.06,1.56,I],[J+.115,1.51,I],[J+.115,1.45,I]],.022,V===1?"#e9b7a5":"#e2e2d8"),i(.064,.064,.035,J,.98,I,V===1?"#a36c6b":"#6c8390")}let ut=["#7da298","#809bb6","#c4ae86"];for(let V=0;V<3;V++){let lt=ut[V],W=-3.7-V*.63;n(.57,.77,.55,4.35,.73,W,"#b8c5bd"),n(.63,.13,.61,4.35,1.16,W,lt),n(.024,.22,.26,4.646,1,W,"#334c50"),n(.49,.065,.48,4.35,.375,W,"#788e89")}i(.18,.23,.12,5.22,.37,3.02,"#3f535b"),i(.076,.104,5.61,5.22,3.18,3.02,"#3e5364"),o([[5.22,5.91,3.02],[5.22,6.13,3.02],[5.22,6.26,3.24],[5.22,6.26,3.7]],.068,"#455c6b"),n(.5,.13,.62,5.22,6.23,3.66,"#314a5a"),n(.38,.045,.49,5.22,6.147,3.66,_,m(_,2.2)),n(.18,.21,.14,5.22,4.01,3.02,"#5b707a");let dt=5.31,B=1.94;i(.033,.033,2.4,dt,1.53,B,"#869ba0");let st=new t.Mesh(new t.CylinderGeometry(.33,.33,.045,40),c("#d8dfcf"));st.position.set(dt,2.47,B),st.rotation.x=Math.PI/2,u(st);let N=new t.Mesh(new t.CylinderGeometry(.292,.292,.051,40),c("#34638c"));N.position.set(dt,2.47,B+.008),N.rotation.x=Math.PI/2,u(N),o([[dt-.16,2.47,B+.049],[dt+.15,2.47,B+.049]],.023,"#eef0dd"),o([[dt+.035,2.59,B+.049],[dt+.16,2.47,B+.049],[dt+.035,2.35,B+.049]],.023,"#eef0dd");for(let V of[-1.96,-.25,1.46])i(.048,.058,.61,V,.64,3.54,"#b6c8c5"),r(.06,V,.96,3.54,"#d6dfd0");n(3.46,.14,.075,-.25,.79,3.54,"#c5d1c7"),n(3.46,.036,.086,-.25,.86,3.54,"#dce2d5");for(let V of[-1.91,1.41])n(.1,.085,.015,V,.79,3.59,"#e9bb68",m("#e9bb68",.2));for(let V of[-3.05,-1.92,-.79])i(.045,.058,.57,5.58,.615,V,"#abbdbb"),r(.053,5.58,.917,V,"#ccd6c9");n(.072,.13,2.38,5.58,.77,-1.92,"#bbcfc7");for(let V of[-3.02,-.82])n(.014,.075,.1,5.625,.77,V,"#dbb976");let Z=[2.85,-7.02];for(let V=0;V<2;V++){let ft=Z[V],W=V===0?7.55:7.27;i(.27,.32,.285,-7.62,.183,ft,"#627681"),i(.15,.19,W,-7.62,.3+W/2,ft,"#778888"),i(.177,.191,.76,-7.62,.69,ft,"#596771"),n(1.72,.12,.12,-7.62,W-.1,ft,"#425865"),n(1.46,.1,.12,-7.62,W-.77,ft,"#526675");for(let J of[-.65,0,.65])i(.025,.025,.3,-7.62+J,W+.04,ft,"#adb8b1"),i(.075,.065,.115,-7.62+J,W+.18,ft,"#d1d9cd"),i(.061,.056,.06,-7.62+J,W+.24,ft,"#a0b3ad");n(.09,.85,.11,-7.62+.13,2.7,ft,"#8b9b96"),n(.3,.7,.047,-7.62,1.07,ft+.179,"#d4b976");for(let J=0;J<3;J++){let I=n(.315,.055,.019,-7.62,.85+J*.18,ft+.21,"#39434a");I.rotation.z=-.38}V===0&&(i(.22,.22,.69,-7.62+.36,6.53,ft,"#8b9fa0"),i(.235,.235,.075,-7.62+.36,6.91,ft,"#c1cbbe"),o([[-7.62+.36,6.94,ft],[-7.62+.44,7.12,ft],[-7.62+.64,7.29,ft]],.015,"#384755"),n(.31,.41,.23,-7.62,4.6,ft+.19,"#6e8387"))}for(let V of[-.65,0,.65])o([[-7.62+V,7.8,2.85],[-7.62+V,7.19,.4],[-7.62+V,6.97,-2.1],[-7.62+V,7.15,-4.6],[-7.62+V,7.52,-7.02]],.014,"#2c3e52");o([[-7.62,6.75,2.85],[-7.65,6,-1.8],[-7.62,6.47,-7.02]],.023,"#344451"),o([[-7.62,6.87,2.85],[-7.16,6,.2],[-5.68,4.15,-1.25]],.017,"#3a4e5c");let tt=-6.1,j=2.85;for(let V of[tt-.52,tt+.52])n(.06,2.055,.07,V,1.073,j,"#677f80");n(1.27,1.12,.1,tt,1.76,j,"#6f8684"),n(1.12,.95,.027,tt,1.76,j+.066,"#c9c3a5"),n(1.43,.08,.32,tt,2.38,j,"#477278");for(let V of[-.4,.4])r(.021,tt+V,2.16,j+.12,"#b65455");for(let V=0;V<2;V++){let lt=-5.03+V*1.35,ft=-6.26;n(1.22,.25,.76,lt,.17,ft,"#6f8186"),n(1.04,.7,.53,lt,.73,ft,"#bac9c3"),n(1.08,.055,.59,lt,1.108,ft,"#d2d7c9");for(let J of[-.35,.35])n(.14,.12,.48,lt+J,.34,ft,"#7d918e");p(.232,.027,lt-.17,.75,ft-.28,"#859895"),p(.175,.013,lt-.17,.75,ft-.296,"#7c9090");let W=new t.Mesh(new t.CircleGeometry(.205,24),c("#627b7e"));W.rotation.y=Math.PI,W.position.set(lt-.17,.75,ft-.286),u(W);for(let J=0;J<6;J++){let I=J*Math.PI/3;x([lt-.17+Math.sin(I)*.22,.75+Math.cos(I)*.22,ft-.307],[lt-.17-Math.sin(I)*.22,.75-Math.cos(I)*.22,ft-.307],.007,"#b0bdb6")}for(let J=0;J<4;J++)n(.17,.02,.023,lt+.32,.67+J*.075,ft-.284,"#849896");o([[lt+.51,.53,ft],[lt+.7,.48,ft],[lt+.71,1.47,-5.67]],.035,"#a6b9b0")}for(let V=0;V<3;V++){let lt=-6.67+(V===2?.53:0),ft=.195+(V===1?.31:0),W=-3.76;n(.48,.29,.54,lt,ft,W,V===2?"#a98659":"#658f82"),n(.5,.035,.56,lt,ft+.16,W,V===2?"#c0a16f":"#92af97");for(let J of[-.075,.06])n(.39,.035,.015,lt,ft+J,W+.278,V===2?"#685d46":"#466b63");n(.17,.065,.013,lt,ft+.06,W+.291,"#293f43")}o([[-5.82,.48,-4.92],[-5.82,1.15,-4.92],[-6.02,1.15,-4.92]],.025,"#7a9999");let xt=i(.07,.07,.024,-5.91,1.2,-4.92,"#779594");return xt.rotation.z=Math.PI/2,{lampPosition:[5.22,6.06,3.66],mascotLightPosition:[y-.7,3.25,R+.9]}}function Im(s){let{THREE:t,box:e,cyl:n,mat:i,add:r}=s,o=.062,a=.304,l="#6e7f89",c="#bfc9bf",u="#192c3a";function h(L,$,z=1){let at=new t.BufferGeometry;at.setAttribute("position",new t.Float32BufferAttribute(L.flat(),3));let ut=new t.LineBasicMaterial({color:$,transparent:z<1,opacity:z,depthWrite:!1}),dt=new t.LineSegments(at,ut);return r(dt),dt}function d(L,$,z,at={}){let ut=new t.InstancedMesh(L,i($,at),z.length),dt=new t.Object3D;return z.forEach((B,st)=>{dt.position.set(B.x,B.y,B.z),dt.rotation.set(B.rx||0,B.ry||0,B.rz||0),dt.scale.set(B.sx||1,B.sy||1,B.sz||1),dt.updateMatrix(),ut.setMatrixAt(st,dt.matrix)}),ut.castShadow=!1,ut.receiveShadow=!0,r(ut),ut}let f=[[-5.9,1.4],[3.7,1.4],[3.7,-6.4],[5.8,-6.4],[5.8,3.7],[-5.9,3.7]],g=new t.Shape;f.forEach(([L,$],z)=>z?g.lineTo(L,-$):g.moveTo(L,-$)),g.closePath();let _=new t.ExtrudeGeometry(g,{depth:.255,bevelEnabled:!1});_.rotateX(-Math.PI/2);let m=new t.Mesh(_,[i(l,{roughness:.64}),i("#526571",{roughness:.8})]);m.position.y=.045,m.receiveShadow=!0,m.castShadow=!0,r(m);let p=[];for(let L=-5.9;L<=5.81;L+=.65)p.push([L,a,1.41],[L,a,3.7]),p.push([L,.07,3.705],[L,.3,3.705]);for(let L=1.4;L<=3.71;L+=.575)p.push([-5.9,a,L],[5.8,a,L]);for(let L=3.7;L<=5.81;L+=.7)p.push([L,a,-6.4],[L,a,1.4]);for(let L=-6.4;L<=3.71;L+=.65)L<1.4&&p.push([3.7,a,L],[5.8,a,L]),p.push([5.805,.07,L],[5.805,.3,L]);h(p,"#344c5c",.38),e(11.7,.012,.11,-.05,.306,3.645,"#94a5aa",{roughness:.55}),e(.11,.012,10.1,5.745,.306,-1.35,"#8b9ea4",{roughness:.55}),e(.11,.012,2.3,-5.845,.306,2.55,"#8499a0");let x=[];for(let L=-5.9;L<=5.81;L+=.65)x.push([L,.314,3.587],[L,.314,3.701]);for(let L=-6.4;L<=3.71;L+=.65)x.push([5.687,.314,L],[5.801,.314,L]);h(x,"#324b57",.65);let v=[];for(let L=-.65;L<=3.42;L+=.34)v.push({x:L,y:.314,z:3.18});for(let L=1.75;L<=2.84;L+=.34)v.push({x:1.73,y:.314,z:L});d(new t.BoxGeometry(.316,.02,.316),"#bbac63",v,{roughness:.7});let y=[],R=[];v.forEach(L=>{if(Math.abs(L.x-1.73)<.05&&L.z>3)for(let $=-1;$<=1;$++)for(let z=-1;z<=1;z++)R.push({x:L.x+$*.083,y:.331,z:L.z+z*.083});else for(let $=-1;$<=1;$++)y.push({x:L.x+(L.z<3?$*.078:0),y:.332,z:L.z+(L.z<3?0:$*.078),ry:L.z<3?Math.PI/2:0})}),d(new t.BoxGeometry(.242,.018,.021),"#d0bf73",y,{roughness:.62}),R.length&&d(new t.CylinderGeometry(.021,.025,.013,6),"#d0bf73",R),e(11.65,.008,.085,-.025,.052,3.755,"#182d3a",{roughness:.24}),e(.085,.008,10.1,5.855,.052,-1.35,"#182d3a",{roughness:.24});let w=[[-5.13,3.79,!1],[-1.13,3.79,!1],[4.85,3.79,!1],[5.89,-5.5,!0],[5.89,-1.6,!0],[5.89,2.55,!0]],E=[];w.forEach(([L,$,z])=>{e(z?.23:.67,.016,z?.67:.23,L,.06,$,"#111f2b",{roughness:.3}),e(z?.26:.72,.008,z?.72:.035,L,.065,$+(z?0:.125),"#5a7079",{metalness:.6,roughness:.3});for(let at=-4;at<=4;at++)E.push({x:L+(z?0:at*.068),y:.073,z:$+(z?at*.068:0),ry:z?Math.PI/2:0})}),d(new t.BoxGeometry(.024,.014,.215),"#506a74",E,{metalness:.65,roughness:.28});let C=new t.MeshStandardMaterial({color:c,roughness:.24,metalness:.12,transparent:!0,opacity:.83,polygonOffset:!0,polygonOffsetFactor:-2});function b(L,$,z,at,ut=C,dt=o){let B=new t.Mesh(new t.PlaneGeometry(L,$),ut);return B.rotation.x=-Math.PI/2,B.position.set(z,dt,at),B.receiveShadow=!0,r(B),B}for(let L=4.14;L<8.7;L+=.72)b(3.4,.39,3,L);b(.075,4,-5.8,6.5),b(.075,4,-2.5,6.5),b(3.3,.075,-4.15,4.5),b(.64,.075,-5.48,8.5),b(.64,.075,-2.82,8.5),e(1.52,.15,.23,-4.15,.127,4.94,"#7d8989",{roughness:.85}),e(.24,.026,.15,-4.65,.211,4.94,"#bfb98e",{roughness:.5}),e(.24,.026,.15,-3.65,.211,4.94,"#bfb98e",{roughness:.5});function M(L,$,z,at,ut,dt=!1){let B=document.createElement("canvas");B.width=256,B.height=dt?768:256;let st=B.getContext("2d");st.fillStyle="#c5d0c9",st.textAlign="center",st.textBaseline="middle",st.font=`800 ${dt?206:222}px "Yu Gothic", "Hiragino Kaku Gothic ProN", Arial, sans-serif`,dt?[...L].forEach((tt,j)=>st.fillText(tt,128,138+j*244)):st.fillText(L,128,139);let N=new t.CanvasTexture(B);N.colorSpace=t.SRGBColorSpace;let Z=new t.MeshStandardMaterial({map:N,transparent:!0,opacity:.69,roughness:.3,depthWrite:!1,polygonOffset:!0,polygonOffsetFactor:-3,side:t.DoubleSide});return b($,z,at,ut,Z,.068)}M("P",.84,.84,-4.15,7.33),b(2.35,.18,7.32,4.12);let D=new t.MeshStandardMaterial({color:"#ad8850",transparent:!0,opacity:.63,roughness:.28});b(5.8,.052,-5.62,8.71,D),b(.052,7.9,8.71,-1.15,D),n(.43,.43,.027,-.82,.061,6.26,"#243e4b",{roughness:.27,metalness:.5,radialSegments:48}),n(.383,.383,.011,-.82,.079,6.26,"#39525d",{roughness:.3,metalness:.4,radialSegments:48});let G=[];for(let L=-.28;L<=.281;L+=.08){let $=Math.sqrt(.12249999999999998-L*L);G.push([-.82+L,.087,6.26-$],[-.82+L,.087,6.26+$]),G.push([-.82-$,.087,6.26+L],[-.82+$,.087,6.26+L])}h(G,"#182c3a",.95),e(.085,.006,.026,-.82,.087,6.54,"#0f2330"),e(.085,.006,.026,-.82,.087,5.98,"#0f2330");let k=[[-7.25,6.35,1.1,.61,1.2],[-6.55,4.18,1.3,.32,2.4],[-4.1,8.35,.97,.29,3.7],[-1,8.06,1.48,.45,1.8],[1.3,5.15,.69,.33,.1],[5.39,7.78,.65,.77,2.7],[6.88,1.05,.57,1.17,1.9],[7.8,-3.73,.42,1.3,3],[-7.39,-.95,.74,1.49,1],[-7.8,-5.49,.53,.75,2.9],[2.67,-7.4,1.32,.62,1.6],[-2.28,-7.8,1.13,.54,3.1]],X=new t.MeshBasicMaterial({color:"#557e91",transparent:!0,opacity:.075,depthWrite:!1,polygonOffset:!0,polygonOffsetFactor:-1}),et=[];return k.forEach(([L,$,z,at,ut],dt)=>{let B=new t.Shape,st=[],N=30;for(let tt=0;tt<N;tt++){let j=tt/N*Math.PI*2,xt=1+.13*Math.sin(j*3+ut)+.06*Math.sin(j*7+ut*2);st.push([Math.cos(j)*z*xt,Math.sin(j)*at*xt])}st.forEach(([tt,j],xt)=>xt?B.lineTo(tt,-j):B.moveTo(tt,-j)),B.closePath();let Z=new t.Mesh(new t.ShapeGeometry(B),X);Z.rotation.x=-Math.PI/2,Z.position.set(L,.056+dt*2e-5,$),r(Z);for(let tt=2;tt<8;tt++){let j=st[tt],xt=st[tt+1];et.push([L+j[0],.063,$+j[1]],[L+xt[0],.063,$+xt[1]])}}),h(et,"#6b97a7",.27),h([[-8.67,.063,2.3],[-7.96,.063,2.17],[-7.96,.063,2.17],[-7.34,.063,2.46],[-7.34,.063,2.46],[-6.85,.063,2.43],[6.67,.063,-6.87],[7.55,.063,-6.43],[7.55,.063,-6.43],[8.16,.063,-6.62],[-5.57,.063,-7.48],[-4.92,.063,-7.29],[-4.92,.063,-7.29],[-4.21,.063,-7.37]],u,.78),{pavement:m,roadLevel:o,sidewalkLevel:a}}var xr=class s extends $t{constructor(t,e={}){super(t),this.isReflector=!0,this.type="Reflector",this.camera=new pe;let n=this,i=e.color!==void 0?new mt(e.color):new mt(8355711),r=e.textureWidth||512,o=e.textureHeight||512,a=e.clipBias||0,l=e.shader||s.ReflectorShader,c=e.multisample!==void 0?e.multisample:4,u=new Qe,h=new A,d=new A,f=new A,g=new Ft,_=new A(0,0,-1),m=new Kt,p=new A,x=new A,v=new Kt,y=new Ft,R=this.camera,w=new Me(r,o,{samples:c,type:nn}),E=new de({name:l.name!==void 0?l.name:"unspecified",uniforms:dn.clone(l.uniforms),fragmentShader:l.fragmentShader,vertexShader:l.vertexShader});E.uniforms.tDiffuse.value=w.texture,E.uniforms.color.value=i,E.uniforms.textureMatrix.value=y,this.material=E,this.onBeforeRender=function(C,b,M){if(d.setFromMatrixPosition(n.matrixWorld),f.setFromMatrixPosition(M.matrixWorld),g.extractRotation(n.matrixWorld),h.set(0,0,1),h.applyMatrix4(g),p.subVectors(d,f),p.dot(h)>0)return;p.reflect(h).negate(),p.add(d),g.extractRotation(M.matrixWorld),_.set(0,0,-1),_.applyMatrix4(g),_.add(f),x.subVectors(d,_),x.reflect(h).negate(),x.add(d),R.position.copy(p),R.up.set(0,1,0),R.up.applyMatrix4(g),R.up.reflect(h),R.lookAt(x),R.far=M.far,R.updateMatrixWorld(),R.projectionMatrix.copy(M.projectionMatrix),y.set(.5,0,0,.5,0,.5,0,.5,0,0,.5,.5,0,0,0,1),y.multiply(R.projectionMatrix),y.multiply(R.matrixWorldInverse),y.multiply(n.matrixWorld),u.setFromNormalAndCoplanarPoint(h,d),u.applyMatrix4(R.matrixWorldInverse),m.set(u.normal.x,u.normal.y,u.normal.z,u.constant);let D=R.projectionMatrix;v.x=(Math.sign(m.x)+D.elements[8])/D.elements[0],v.y=(Math.sign(m.y)+D.elements[9])/D.elements[5],v.z=-1,v.w=(1+D.elements[10])/D.elements[14],m.multiplyScalar(2/m.dot(v)),D.elements[2]=m.x,D.elements[6]=m.y,D.elements[10]=m.z+1-a,D.elements[14]=m.w,n.visible=!1;let G=C.getRenderTarget(),k=C.xr.enabled,X=C.shadowMap.autoUpdate;C.xr.enabled=!1,C.shadowMap.autoUpdate=!1,C.setRenderTarget(w),C.state.buffers.depth.setMask(!0),C.autoClear===!1&&C.clear(),C.render(b,R),C.xr.enabled=k,C.shadowMap.autoUpdate=X,C.setRenderTarget(G);let et=M.viewport;et!==void 0&&C.state.viewport(et),n.visible=!0},this.getRenderTarget=function(){return w},this.dispose=function(){w.dispose(),n.material.dispose()}}};xr.ReflectorShader={name:"ReflectorShader",uniforms:{color:{value:null},tDiffuse:{value:null},textureMatrix:{value:null}},vertexShader:`
 		uniform mat4 textureMatrix;
 		varying vec4 vUv;
 
@@ -4291,17 +4291,18 @@ function bilingualLabel(zh,en,w,h,x,y,z,style={}){
   localePairs.push([a,b]);
   return [a,b];
 }
-bilingualLabel("iTong 的实验室","iTong Slab",4.65,.55,-2.58,4.04,1.844,{fg:"#e3eee6",fontSize:178});
+bilingualLabel("iTong 的实验室","iTong Slab",4.65,.46,-2.58,4.13,1.844,{fg:"#e3eee6",fontSize:178});
+bilingualLabel("陈禹同的研究空间","Yutong Chen’s research space",4.35,.18,-2.58,3.73,1.848,{fg:"#a8cfc7",fontSize:66});
 bilingualLabel("实验室 · 01","SLAB · 01",.75,.3,3.833,2.9,1.04,{rotationY:Math.PI/2,bg:"#385c69",fg:"#d1ddd0"});
 bilingualLabel("单行道","ONE WAY",.7,.2,5.31,2,1.967,{bg:"#e4e6d7",fg:"#4c626e"});
 bilingualLabel("汉口路22号","22 Hankou Road",.98,.24,5.24,3.91,3.13,{bg:"#366979",fg:"#e8eee0"});
 
 // The former Japanese noticeboard becomes a personal-site wayfinding sign.
-const boardX=-6.64,boardZ=-.28;
+const boardX=-6.1,boardZ=2.85;
 bilingualLabel("iTong Slab","iTong Slab",1.14,.18,boardX,2.3,boardZ+.173,{bg:"#456f73",fg:"#e9e4cd",fontSize:108});
 bilingualLabel("隐空间\n推理","LATENT\nREASONING",.43,.52,boardX-.28,1.88,boardZ+.09,{bg:"#e9b785",fg:"#744c48"});
 bilingualLabel("物理\n智能","PHYSICAL\nAI",.43,.35,boardX+.27,1.96,boardZ+.093,{bg:"#e6e6c9",fg:"#577876"});
-bilingualLabel("最新研究","LATEST WORK",.43,.25,boardX+.27,1.54,boardZ+.093,{bg:"#a9c9be",fg:"#476c68"});
+bilingualLabel("知识记忆","KNOWLEDGE\n& MEMORY",.43,.25,boardX+.27,1.54,boardZ+.093,{bg:"#a9c9be",fg:"#476c68"});
 bilingualLabel("Penelope","Penelope",.43,.2,boardX-.28,1.44,boardZ+.093,{bg:"#d9ddd1",fg:"#688184"});
 // A smaller standing sign beside the glass entrance makes the portal legible nearby.
 Oo.box(.83,1.13,.075,3.38,.82,2.6,"#395f68");
@@ -4323,109 +4324,219 @@ const wasteLabels=[["瓶罐","BOTTLES\n& CANS"],["塑料瓶","PLASTIC\nBOTTLES"]
 for (const [index,[zh,en]] of wasteLabels.entries()) {
   bilingualLabel(zh,en,.42,.2,4.651,.71,-3.7-index*.63,{bg:"#e1e6dc",fg:"#455965",rotationY:Math.PI/2,fontSize:76});
 }
-var Wm=new Set;vr.traverse(s=>{s.material&&!Array.isArray(s.material)&&(s.material=s.material.clone(),s.material.userData.initialOpacity=s.material.opacity,Wm.add(s.material))});var db=Dm(ze),fb=Lm(ze),_s=new Ic(Hn);_s.renderTarget1.samples=4;_s.renderTarget2.samples=4;_s.addPass(new Dc(ze,Mn));var pb=new _r(new K(innerWidth,innerHeight),.14,.38,1.1);_s.addPass(pb);_s.addPass(new Lc);var Fo=1,vd=0,yd=performance.now(),Md=0,bd=0,Um=0,mb=matchMedia("(prefers-reduced-motion: reduce)").matches;function Td(){let s=innerWidth/innerHeight;fe.maxDistance=Math.max(65,54/s),Mn.position.copy(Fm),fe.target.copy(Fc),s<1.25&&Mn.position.sub(Fc).multiplyScalar(1.25/s).add(Fc),fe.update()}Td();function Xm(){Td(),Mn.zoom=1,Mn.updateProjectionMatrix()}var entranceDoors=Oc.userData.entranceDoors,entranceOpen=false,doorProgress=0,doorRaycaster=new Cu,doorPointerStart=null,lastDoorClick=0;
-const HOME_URL="./home.html";
-const entryHint=document.getElementById("entry-hint");
-const entryHintTitle=document.getElementById("entry-hint-title");
-const entryHintSubtitle=document.getElementById("entry-hint-subtitle");
-const languageToggle=document.getElementById("language-toggle");
-const homeOverlay=document.getElementById("home-overlay");
-const homeBack=document.getElementById("home-back");
-const homeExternal=document.getElementById("home-external");
-const homeFrame=document.getElementById("home-frame");
-const homeLoading=document.getElementById("home-loading");
-const homeLoadingTitle=document.getElementById("home-loading-title");
-const homeLoadingText=document.getElementById("home-loading-text");
-const homeLoadingLink=document.getElementById("home-loading-link");
-var labLanguage="zh",portalState="idle",portalElapsed=0,portalKnots=[],lastPortalClick=0;
-homeExternal.href=HOME_URL;
-function setLabLanguage(lang){
-  labLanguage=lang;
-  document.documentElement.lang=lang==="zh"?"zh-CN":"en";
-  for(const [zh,en] of localePairs){zh.visible=lang==="zh";en.visible=lang==="en"}
-  entryHintTitle.textContent=lang==="zh"?"进入个人主页":"Explore my research";
-  entryHintSubtitle.textContent=lang==="zh"?"了解我的研究与工作":"Discover my research and publications";
-  entryHint.setAttribute("aria-label",entryHintTitle.textContent);
-  try{localStorage.setItem("yutong-homepage-language",lang)}catch{}
-  languageToggle.textContent=lang==="zh"?"EN":"中文";
-  languageToggle.setAttribute("aria-label",lang==="zh"?"Switch to English":"切换为中文");
-  homeBack.dataset.shortLabel=lang==="zh"?"实验室":"LAB";
-  homeBack.textContent=lang==="zh"?"← 返回iTong的实验室":"← Back to iTong's lab";
-  homeExternal.textContent=lang==="zh"?"在新标签打开主页 ↗":"Open website in a new tab ↗";
-  homeLoadingTitle.textContent=lang==="zh"?"正在进入个人主页…":"Opening my homepage…";
-  homeLoadingText.textContent=lang==="zh"?"如果加载较慢，可以直接打开：":"If loading takes a while, open directly:";
-  homeLoadingLink.textContent=lang==="zh"?"个人主页":"Personal homepage";
-  document.getElementById("scene").setAttribute("aria-label",lang==="zh"?"iTong 的实验室三维场景。拖动旋转，滚轮或双指缩放，右键或双指拖动平移。点击自动门可开关，点击左下角进入个人主页。双击或按 Home 恢复视角，方向键旋转，加减键缩放。":"Interactive 3D iTong Slab. Drag to rotate, scroll or pinch to zoom, right-drag or use two fingers to pan. Click the automatic doors to open or close them. Use the lower-left link to enter the homepage. Double-click or press Home to reset, arrow keys to rotate, and plus or minus to zoom.");
-  homeFrame.title=lang==="zh"?"iTong 的个人主页":"iTong's homepage";
-  homeOverlay.setAttribute("aria-label",homeFrame.title);
+// The screen and physical noticeboard echo the content reached through the portal.
+bilingualLabel("YC. / iTong Slab","YC. / iTong Slab",.93,.13,-4.39,2.01,-4.288,{bg:"#0d2535",fg:"#b8efd9",fontSize:83});
+bilingualLabel("研究 · 论文 · 联系","RESEARCH / WORK / CONTACT",.93,.09,-4.39,1.86,-4.285,{bg:"#0d2535",fg:"#a0babd",fontSize:55});
+bilingualLabel("隐空间推理","LATENT REASONING",2.35,.18,-.28,2.95,-5.385,{bg:"#e6ebe4",fg:"#355b64",fontSize:79});
+bilingualLabel("知识与记忆增强","KNOWLEDGE & MEMORY",2.35,.18,-.28,2.68,-5.384,{bg:"#e6ebe4",fg:"#355b64",fontSize:79});
+bilingualLabel("物理智能","PHYSICAL AI",2.35,.18,-.28,2.4,-5.383,{bg:"#e6ebe4",fg:"#355b64",fontSize:79});
+// A distinct paper notice on the front window; its recurrence motif matches the paper art.
+Oo.box(1.66,1.09,.055,-2.9,2.24,1.62,"#263f4f",{outline:false});
+Oo.box(1.56,.99,.017,-2.9,2.24,1.661,"#112937",{outline:false});
+bilingualLabel("最新研究 / 2026","LATEST WORK / 2026",1.38,.11,-2.9,2.59,1.68,{fg:"#8ecfbe",fontSize:64});
+bilingualLabel("Penelope","Penelope",1.36,.22,-2.9,2.36,1.68,{fg:"#edf6ed",fontSize:131});
+bilingualLabel("隐空间递归推理","LOCALIZED LATENT RECURRENCE",1.36,.10,-2.9,1.89,1.68,{fg:"#b4c8c9",fontSize:55});
+const noticeMotif=new gr.Group();noticeMotif.name="penelope-notice";ze.add(noticeMotif);
+for(let i=0;i<3;i++){
+  const ring=new gr.Mesh(new gr.TorusGeometry(.105,.012,6,24),new gr.MeshBasicMaterial({color:i===1?"#b8efd9":"#698f99"}));
+  ring.position.set(-3.18+i*.28,2.10,1.69);noticeMotif.add(ring);
 }
-languageToggle.addEventListener("click",()=>setLabLanguage(labLanguage==="zh"?"en":"zh"));
-let initialLabLanguage="en";
-try{initialLabLanguage=localStorage.getItem("yutong-homepage-language")==="zh"?"zh":"en"}catch{}
-setLabLanguage(initialLabLanguage);
-homeFrame.addEventListener("load",()=>{if(homeFrame.dataset.started==="true"){homeLoading.hidden=true;homeOverlay.classList.add("is-loaded")}});
+var Wm=new Set;vr.traverse(s=>{s.material&&!Array.isArray(s.material)&&(s.material=s.material.clone(),s.material.userData.initialOpacity=s.material.opacity,Wm.add(s.material))});var db=Dm(ze),fb=Lm(ze),_s=new Ic(Hn);_s.renderTarget1.samples=4;_s.renderTarget2.samples=4;_s.addPass(new Dc(ze,Mn));var pb=new _r(new K(innerWidth,innerHeight),.14,.38,1.1);_s.addPass(pb);_s.addPass(new Lc);var Fo=1,vd=0,yd=performance.now(),Md=0,bd=0,Um=0,mb=matchMedia("(prefers-reduced-motion: reduce)").matches;function Td(){
+  const aspect=innerWidth/innerHeight;
+  fe.maxDistance=Math.max(65,54/aspect);
+  if(aspect<.8){
+    Mn.position.set(2.8,12,40.5);fe.target.set(-1.4,1.3,.1);
+  }else if(aspect<1.25){
+    Mn.position.set(15,12.5,27);fe.target.set(-.6,1.4,0);
+  }else{Mn.position.copy(Fm);fe.target.copy(Fc)}
+  fe.update();
+}Td();function Xm(){Td(),Mn.zoom=1,Mn.updateProjectionMatrix()}var entranceDoors=Oc.userData.entranceDoors,entranceOpen=false,doorProgress=0,doorRaycaster=new Cu,doorPointerStart=null,lastDoorClick=0;
+const HOME_URL="./home.html";
+const entryHint=document.getElementById("entry-hint"),entryHintTitle=document.getElementById("entry-hint-title"),languageToggle=document.getElementById("language-toggle");
+const homeOverlay=document.getElementById("home-overlay"),homeBack=document.getElementById("home-back"),homeExternal=document.getElementById("home-external"),homeFrame=document.getElementById("home-frame");
+const labInterface=document.getElementById("lab-interface"),hotspotLayer=document.getElementById("lab-hotspots"),portalVeil=document.getElementById("portal-veil"),portalSkip=document.getElementById("portal-skip");
+const menuToggle=document.getElementById("lab-menu-toggle"),labMenu=document.getElementById("lab-menu"),settingsButton=document.getElementById("lab-settings-toggle"),settingsPanel=document.getElementById("lab-settings"),motionInput=document.getElementById("lab-motion"),qualityInput=document.getElementById("lab-quality"),startInput=document.getElementById("lab-start-home"),viewButton=document.getElementById("lab-view");
+var labLanguage="en",portalState="idle",portalElapsed=0,portalStartedAt=0,portalKnots=[],lastPortalClick=0,portalSection=null,frameReady=homeFrame.dataset.ready==="true",viewWhole=false,labQuality="full",returnPose=null;
+const readPreference=(key,fallback)=>{try{return localStorage.getItem(key)||fallback}catch{return fallback}};
+const savePreference=(key,value)=>{try{localStorage.setItem(key,value)}catch{}};
+const systemReduced=matchMedia("(prefers-reduced-motion: reduce)");
+mb=systemReduced.matches||readPreference("yutong-motion","on")==="off";
+motionInput.checked=!mb;qualityInput.checked=readPreference("itong-quality","full")==="light";startInput.checked=readPreference("itong-start-home","off")==="on";
+const experienceCopy={
+ en:{rainSound:"Rain ambience",greet:"Say hello to the capybara",menuToggle:"Explore",menuTitle:"Explore iTong Slab",paperHint:"Latest paper",researchHint:"Three research themes",homeHint:"Research & publications",space:"Yutong Chen’s research space",hint:"A small world of research",enter:"Explore my research",entrySub:"Step inside iTong Slab",settings:"Experience settings",motion:"Motion effects",quality:"Light rendering",start:"Open homepage on future visits",view:"View whole scene",resetView:"Reset view",closeView:"Closer view",penelope:"Penelope",research:"Research directions",home:"Enter homepage",skip:"Skip transition",guide:"Drag to orbit · Tap to explore",back:"Back to iTong’s lab",short:"LAB",direct:"Homepage",settingsHint:"Preferences are shared with the homepage.",routePaper:"From the lab to Penelope",routeResearch:"From ideas to research",routeHome:"Step into my research"},
+ zh:{rainSound:"环境雨声",greet:"和水豚打个招呼",menuToggle:"探索",menuTitle:"探索 iTong Slab",paperHint:"最新论文",researchHint:"三个研究方向",homeHint:"研究与论文",space:"陈禹同的研究空间",hint:"一个关于研究的小世界",enter:"进入个人主页",entrySub:"走进 iTong Slab",settings:"体验设置",motion:"动态效果",quality:"轻量渲染",start:"下次访问优先打开主页",view:"查看完整场景",resetView:"恢复视角",closeView:"回到近景",penelope:"Penelope",research:"研究方向",home:"进入主页",skip:"跳过转场",guide:"拖动旋转 · 点击标记探索",back:"返回iTong的实验室",short:"实验室",direct:"直接进入主页",settingsHint:"设置会与个人主页保持同步。",routePaper:"从实验室走近 Penelope",routeResearch:"从想法走近研究",routeHome:"走进我的研究空间"}
+};
+const arrowMarkup='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>';
+function sendHome(message){if(homeFrame.dataset.started==="true")homeFrame.contentWindow?.postMessage(message,"*")}
+function syncPreferences(){sendHome({type:"itong:preferences",language:labLanguage,motion:!mb})}
+function setLabLanguage(lang){
+ labLanguage=lang==="zh"?"zh":"en";const c=experienceCopy[labLanguage];
+ document.documentElement.lang=labLanguage==="zh"?"zh-CN":"en";
+ for(const [zh,en] of localePairs){zh.visible=labLanguage==="zh";en.visible=labLanguage==="en"}
+ entryHintTitle.textContent=lang==="zh"?"进入主页":"Enter homepage";entryHint.setAttribute("aria-label",entryHintTitle.textContent);
+ savePreference("yutong-homepage-language",labLanguage);
+ languageToggle.textContent=labLanguage==="zh"?"EN":"中文";languageToggle.setAttribute("aria-label",labLanguage==="zh"?"Switch to English":"切换为中文");
+ homeBack.dataset.shortLabel=c.short;homeBack.innerHTML=arrowMarkup+'<span>'+c.back+'</span>';
+ homeFrame.title=labLanguage==="zh"?"陈禹同的个人主页":"Yutong Chen’s homepage";homeOverlay.setAttribute("aria-label",homeFrame.title);
+ for(const el of document.querySelectorAll('[data-lab-copy]')){const key=el.dataset.labCopy;if(c[key])el.textContent=c[key]}
+ viewButton.querySelector('span').textContent=innerWidth/innerHeight>=1.25?c.resetView:viewWhole?c.closeView:c.view;
+ settingsButton.setAttribute("aria-label",c.settings);portalSkip.textContent=c.skip;
+ for(const spot of labSpots){spot.button.setAttribute("aria-label",c[spot.key]);spot.button.querySelector('.hotspot-label').textContent=c[spot.key]}
+ yn.setAttribute("aria-label",labLanguage==="zh"?"iTong Slab 交互实验室。拖动旋转，双指缩放。点击标记查看 Penelope、研究方向或个人主页。双击或按 Home 恢复视角。":"Interactive iTong Slab. Drag to orbit, pinch to zoom. Select a marker to explore Penelope, research directions or the homepage. Double-click or press Home to reset.");
+ mascotCue.setAttribute('aria-label',c.greet);mascotCue.querySelector('.hotspot-label').textContent=c.greet;window.itongPanels?.setLanguage(labLanguage);window.itongLabPersonality?.setLanguage(labLanguage);syncPreferences();
+}
+function applyLabMotion(enabled,{persist=true}={}){mb=!enabled||systemReduced.matches;motionInput.checked=!mb;document.documentElement.classList.toggle('lab-motion-off',mb);if(persist)savePreference("yutong-motion",enabled?"on":"off");syncPreferences();if(mb&&portalState==="entering"){poseOnPortalPath(1);finishPortalEntry()}else if(mb&&portalState==="exiting")finishPortalExit()}
+function applyQuality(){labQuality=qualityInput.checked?"light":"full";savePreference("itong-quality",labQuality);Hn.setPixelRatio(Math.min(devicePixelRatio,labQuality==="light"?1:1.7));Hn.setSize(innerWidth,innerHeight);_s.setSize(innerWidth,innerHeight);Hn.shadowMap.enabled=labQuality!=="light";db.visible=labQuality!=="light";yn.dataset.quality=labQuality}
+const labSpots=[
+ {key:"penelope",section:"penelope",point:new A(-2.9,2.87,1.79),camera:new A(-2.9,2.35,5.4),target:new A(-2.9,2.24,1.69),icon:'<path d="M8 6a7 7 0 1 1-3 10M8 6v5H3"/>'},
+ {key:"research",section:"research",point:new A(-6.1,2.76,3.02),camera:new A(-6.1,2.15,7.15),target:new A(-6.1,1.85,3.02),icon:'<circle cx="12" cy="12" r="8"/><path d="m15.5 8.5-2.2 4.8-4.8 2.2 2.2-4.8 4.8-2.2Z"/>'},
+ {key:"home",section:null,point:new A(1.65,2.95,1.79),camera:new A(-4.39,1.83,-3.22),target:new A(-4.39,1.81,-4.35),icon:'<path d="M5 4h11v16H5zM11 12h10m-4-4 4 4-4 4"/>'}
+];
+for(const spot of labSpots){
+ const button=document.createElement('button');button.type='button';button.className='lab-hotspot lab-hotspot-'+spot.key;button.dataset.section=spot.section||'home';
+ button.innerHTML='<span class="hotspot-mark"><svg viewBox="0 0 24 24" aria-hidden="true">'+spot.icon+'</svg></span><span class="hotspot-label"></span>';
+ button.addEventListener('click',()=>spot.section?window.itongPanels.open(spot.section):beginPortalEntry());hotspotLayer.append(button);spot.button=button;
+}
+const mascotCue=document.createElement('button');mascotCue.type='button';mascotCue.className='lab-hotspot lab-hotspot-mascot';mascotCue.hidden=true;
+mascotCue.innerHTML='<span class="hotspot-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v10H9l-4 4V5Z"/><path d="M8 9h8m-8 3h5"/></svg></span><span class="hotspot-label"></span>';hotspotLayer.append(mascotCue);mascotCue.addEventListener('click',greetMascot);
+function updateExperience(){
+ if(portalState!=="idle")return;
+ if(labMascot){const point=labMascot.localToWorld(new A(0,2.33,.08)).project(Mn),x=(point.x+1)*innerWidth/2,y=(1-point.y)*innerHeight/2,visible=point.z>-1&&point.z<1&&x>24&&x<innerWidth-24&&y>100&&y<innerHeight-140;mascotCue.hidden=!visible;if(visible)mascotCue.style.transform=`translate(${x.toFixed(1)}px,${y.toFixed(1)}px) translate(-50%,-50%)`;window.itongLabPersonality?.setMascotAnchor({x,y,visible})}
+ for(const spot of labSpots){
+  const point=spot.point.clone().project(Mn);const x=(point.x+1)*innerWidth/2,y=(1-point.y)*innerHeight/2;
+  const visible=point.z>-1&&point.z<1&&x>28&&x<innerWidth-28&&y>94&&y<innerHeight-148;
+  spot.button.hidden=!visible;if(visible)spot.button.style.transform=`translate(${x.toFixed(1)}px,${y.toFixed(1)}px) translate(-50%,-50%)`;
+ }
+}
+function setLabMenu(open){if(open){settingsPanel.hidden=true;settingsButton.setAttribute('aria-expanded','false')}labMenu.hidden=!open;document.querySelector('.lab-guide').hidden=open;menuToggle.setAttribute('aria-expanded',String(open));menuToggle.querySelector('path').setAttribute('d',open?'M6 6 18 18M6 18 18 6':'M5 7h14M5 12h14M5 17h14')}
+function setInterfaceVisible(value){setLabMenu(false);labInterface.hidden=!value;hotspotLayer.hidden=!value;languageToggle.hidden=!value;entryHint.classList.toggle('is-hidden',!value);settingsPanel.hidden=true;settingsButton.setAttribute('aria-expanded','false')}
+function changeRoute(section){const hash=section==='lab'?'#lab':section?'#'+section:'#home';if(location.hash!==hash)history.pushState({itong:true},'',hash)}
 const smoothPortal=t=>t*t*(3-2*t);
 function poseOnPortalPath(progress){
-  const u=Math.max(0,Math.min(1,progress))*(portalKnots.length-1);
-  const i=Math.min(portalKnots.length-2,Math.floor(u));
-  const blend=smoothPortal(u-i);
-  Mn.position.lerpVectors(portalKnots[i].camera,portalKnots[i+1].camera,blend);
-  fe.target.lerpVectors(portalKnots[i].target,portalKnots[i+1].target,blend);
-  Mn.lookAt(fe.target);
-  Mn.updateMatrixWorld();
+ const u=Math.max(0,Math.min(1,progress))*(portalKnots.length-1),i=Math.min(portalKnots.length-2,Math.floor(u)),blend=smoothPortal(u-i);
+ Mn.position.lerpVectors(portalKnots[i].camera,portalKnots[i+1].camera,blend);fe.target.lerpVectors(portalKnots[i].target,portalKnots[i+1].target,blend);Mn.lookAt(fe.target);Mn.updateMatrixWorld();
 }
-function beginPortalEntry(){
-  if(portalState!=="idle")return;
-  portalKnots=[
-    {camera:Mn.position.clone(),target:fe.target.clone()},
-    {camera:new A(1.65,2.3,3.15),target:new A(1.65,1.6,-2.4)},
-    {camera:new A(.15,2.35,-.6),target:new A(-3.7,1.8,-4.25)},
-    {camera:new A(-4.39,1.83,-3.22),target:new A(-4.39,1.81,-4.35)}
-  ];
-  portalState="entering";portalElapsed=0;lastPortalClick=performance.now();
-  entranceOpen=true;yn.dataset.door="open";yn.dataset.portal="entering";
-  fe.enabled=false;fe.enableDamping=false;entryHint.classList.add("is-hidden");
-  homeLoading.hidden=false;
-  if(homeFrame.dataset.started!=="true"){
-    homeFrame.dataset.started="true";
-    homeFrame.src=HOME_URL;
-  }else homeLoading.hidden=true;
-  if(mb){poseOnPortalPath(1);finishPortalEntry()}
+function ensureHome(section){
+ portalSection=section;syncPreferences();if(section)sendHome({type:'itong:navigate',section});
+}
+function beginPortalEntry(section=null,{immediate=false,historyUpdate=true}={}){
+ if(portalState!=="idle")return;
+ portalSection=section;returnPose={camera:Mn.position.clone(),target:fe.target.clone(),zoom:Mn.zoom,door:entranceOpen};
+ const spot=labSpots.find(s=>s.section===section)||labSpots[2];
+ portalKnots=[{camera:Mn.position.clone(),target:fe.target.clone()},
+  section?{camera:Mn.position.clone().lerp(spot.camera,.6),target:spot.target.clone()}:{camera:new A(1.65,2.5,3.4),target:new A(-3.1,1.85,-3.9)},
+  {camera:spot.camera.clone(),target:spot.target.clone()}];
+ Mn.zoom=1;Mn.updateProjectionMatrix();portalState="entering";portalElapsed=0;lastPortalClick=performance.now();portalStartedAt=lastPortalClick;entranceOpen=true;yn.dataset.door="open";yn.dataset.portal="entering";window.itongLabPersonality?.setRoom("home");
+ fe.enabled=false;fe.enableDamping=false;fe.update();Mn.position.copy(returnPose.camera);fe.target.copy(returnPose.target);Mn.lookAt(fe.target);Mn.updateMatrixWorld();setInterfaceVisible(false);ensureHome(section);
+ portalVeil.dataset.destination=section||'home';portalVeil.querySelector('strong').textContent=section==='penelope'?'Penelope':section==='research'?'Research directions':'YC. / iTong Slab';
+ portalVeil.querySelector('small').textContent=experienceCopy[labLanguage][section==='penelope'?'routePaper':section==='research'?'routeResearch':'routeHome'];
+ portalSkip.hidden=false;if(historyUpdate)changeRoute(section||'home');
+ if(mb||immediate){poseOnPortalPath(1);finishPortalEntry()}
 }
 function finishPortalEntry(){
-  portalState="home";yn.dataset.portal="home";
-  homeOverlay.classList.add("is-open");homeOverlay.setAttribute("aria-hidden","false");
-  languageToggle.hidden=true;
-  homeBack.focus({preventScroll:true});
+ portalState="home";yn.dataset.portal="home";window.itongLabPersonality?.setRoom("home");portalSkip.hidden=true;portalVeil.classList.remove('is-active');
+ homeOverlay.classList.add("is-open");homeOverlay.setAttribute("aria-hidden","false");setInterfaceVisible(false);
+ savePreference('itong-visited','yes');syncPreferences();sendHome({type:'itong:visibility',visible:true});if(frameReady&&portalSection)sendHome({type:'itong:navigate',section:portalSection});homeBack.focus({preventScroll:true});
 }
-function beginPortalExit(){
-  if(portalState!=="home")return;
-  portalState="exiting";portalElapsed=0;yn.dataset.portal="exiting";
-  homeOverlay.classList.remove("is-open");homeOverlay.setAttribute("aria-hidden","true");
-  languageToggle.hidden=false;
-  if(mb){poseOnPortalPath(0);finishPortalExit()}
+function beginPortalExit({historyUpdate=true}={}){
+ if(portalState==="entering"){finishPortalEntry()}
+ if(portalState!=="home")return;
+ portalState="exiting";portalElapsed=0;portalStartedAt=performance.now();yn.dataset.portal="exiting";homeOverlay.classList.remove("is-open");homeOverlay.setAttribute("aria-hidden","true");sendHome({type:"itong:visibility",visible:false});portalVeil.classList.remove('is-active');
+ if(historyUpdate)changeRoute('lab');if(mb)finishPortalExit();
 }
 function finishPortalExit(){
-  portalState="idle";entranceOpen=false;yn.dataset.door="closed";yn.dataset.portal="idle";
-  fe.enabled=true;fe.enableDamping=false;fe.update();fe.enableDamping=true;
-  entryHint.classList.remove("is-hidden");yn.focus({preventScroll:true});
-  homeFrame.src="about:blank";homeFrame.dataset.started="false";homeLoading.hidden=false;homeOverlay.classList.remove("is-loaded");
+ if(returnPose){Mn.position.copy(returnPose.camera);fe.target.copy(returnPose.target);Mn.zoom=returnPose.zoom;Mn.updateProjectionMatrix();entranceOpen=returnPose.door}
+ portalState="idle";window.itongLabPersonality?.setRoom("lab");yn.dataset.door=entranceOpen?"open":"closed";yn.dataset.portal="idle";
+ fe.enabled=true;fe.enableDamping=false;fe.update();fe.enableDamping=true;setInterfaceVisible(true);setLabLanguage(labLanguage);yn.focus({preventScroll:true});
+ // Keep the iframe alive so a return visit resumes the exact reading position.
 }
 function advancePortal(dt){
-  if(portalState==="entering"){
-    portalElapsed+=dt;poseOnPortalPath(Math.min(1,portalElapsed/2.8));
-    if(portalElapsed>=2.8)finishPortalEntry();
-  }else if(portalState==="exiting"){
-    portalElapsed+=dt;poseOnPortalPath(1-Math.min(1,portalElapsed/2.15));
-    if(portalElapsed>=2.15)finishPortalExit();
-  }
+ if(portalState==="entering"){
+  portalElapsed=(performance.now()-portalStartedAt)/1000;poseOnPortalPath(Math.min(1,portalElapsed/1.35));portalVeil.classList.toggle('is-active',portalElapsed>.84);
+  if(portalElapsed>=1.35)finishPortalEntry();
+ }else if(portalState==="exiting"){
+  portalElapsed=(performance.now()-portalStartedAt)/1000;poseOnPortalPath(1-Math.min(1,portalElapsed/.9));if(portalElapsed>=.9)finishPortalExit();
+ }
 }
-entryHint.addEventListener("click",event=>{event.preventDefault();beginPortalEntry()});
-homeBack.addEventListener("click",beginPortalExit);
-document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"&&portalState==="home"){e.preventDefault();beginPortalExit()}
-  if((e.key==="l"||e.key==="L")&&portalState==="idle"&&e.target===yn)setLabLanguage(labLanguage==="zh"?"en":"zh");
+window.itongPanels.onOpen=()=>{setLabMenu(false);
+ const pose={camera:Mn.position.clone(),target:fe.target.clone()};fe.enableDamping=false;fe.update();Mn.position.copy(pose.camera);fe.target.copy(pose.target);Mn.lookAt(fe.target);fe.enableDamping=true;fe.enabled=false;
+};
+window.itongPanels.onClose=()=>{if(portalState==="idle")fe.enabled=true};
+window.itongPanels.onEnter=(section,topic)=>{beginPortalEntry(section);if(topic)sendHome({type:'itong:topic',topic})};
+window.itongSceneControls=true;
+window.addEventListener("itong:open-now",()=>beginPortalEntry(null,{immediate:true}));
+entryHint.addEventListener('click',event=>{event.preventDefault();beginPortalEntry()});
+homeBack.addEventListener('click',()=>beginPortalExit());
+portalSkip.addEventListener('click',()=>{if(portalState==='entering'){poseOnPortalPath(1);finishPortalEntry()}});
+languageToggle.addEventListener('click',()=>setLabLanguage(labLanguage==='zh'?'en':'zh'));
+menuToggle.addEventListener('click',()=>setLabMenu(labMenu.hidden));
+labMenu.addEventListener('click',event=>{if(event.target.closest('button'))setLabMenu(false)});
+document.addEventListener('pointerdown',event=>{if(!labMenu.hidden&&!labMenu.contains(event.target)&&!menuToggle.contains(event.target))setLabMenu(false)});
+settingsButton.addEventListener('click',()=>{setLabMenu(false);settingsPanel.hidden=!settingsPanel.hidden;settingsButton.setAttribute('aria-expanded',String(!settingsPanel.hidden))});
+motionInput.addEventListener('change',()=>applyLabMotion(motionInput.checked));qualityInput.addEventListener('change',applyQuality);
+startInput.addEventListener('change',()=>savePreference('itong-start-home',startInput.checked?'on':'off'));
+viewButton.addEventListener('click',()=>{
+ if(innerWidth/innerHeight>=1.25){viewWhole=false;Xm();setLabLanguage(labLanguage);return}
+ viewWhole=!viewWhole;
+ if(viewWhole){const aspect=innerWidth/innerHeight;Mn.position.copy(Fm);fe.target.copy(Fc);if(aspect<1.25)Mn.position.sub(Fc).multiplyScalar(1.16/aspect).add(Fc);fe.update()}else Td();
+ setLabLanguage(labLanguage);viewButton.setAttribute('aria-pressed',String(viewWhole));
 });
+for(const button of document.querySelectorAll('[data-lab-route]'))button.addEventListener('click',()=>window.itongPanels.open(button.dataset.labRoute));
+document.addEventListener('pointerdown',event=>{if(!settingsPanel.hidden&&!settingsPanel.contains(event.target)&&!settingsButton.contains(event.target)){settingsPanel.hidden=true;settingsButton.setAttribute('aria-expanded','false')}});
+systemReduced.addEventListener('change',()=>applyLabMotion(readPreference('yutong-motion','on')!=='off',{persist:false}));
+window.addEventListener('message',event=>{
+ if(event.source!==homeFrame.contentWindow||!event.data||typeof event.data.type!=='string')return;
+ const data=event.data;
+ if(data.type==='itong:home-ready'){frameReady=true;syncPreferences();sendHome({type:'itong:visibility',visible:portalState==='home'});if(portalSection)sendHome({type:'itong:navigate',section:portalSection})}
+ if(data.type==='itong:language'&&(data.language==='en'||data.language==='zh')&&data.language!==labLanguage)setLabLanguage(data.language);
+ if(data.type==='itong:motion'&&typeof data.enabled==='boolean'&&data.enabled!==!mb)applyLabMotion(data.enabled);
+ if(data.type==='itong:return')beginPortalExit();
+ if(data.type==='itong:route'&&/^(top|about|research|publications|penelope|contact)$/.test(data.section)){portalSection=data.section;changeRoute(data.section)}
+});
+homeFrame.addEventListener('load',()=>{if(homeFrame.dataset.started==='true'){syncPreferences();homeOverlay.classList.add('is-loaded')}});
+function followRoute(){
+ const route=location.hash.slice(1);
+ const panel=route.match(/^lab\/(penelope|research)$/);
+ if(panel){if(portalState!=="idle")finishPortalExit();window.itongPanels.open(panel[1],{historyUpdate:false});return}
+ window.itongPanels.close({historyUpdate:false});
+ if(route==='lab'||!route){if(portalState==='home'||portalState==='entering')beginPortalExit({historyUpdate:false});return}
+ if(!/^(home|top|about|research|publications|penelope|contact)$/.test(route))return;
+ const section=route==='home'?null:route;
+ if(portalState==='idle')beginPortalEntry(section,{immediate:true,historyUpdate:false});
+ else if(portalState==='exiting'){finishPortalExit();beginPortalEntry(section,{immediate:true,historyUpdate:false})}
+ else if(portalState==='home'){portalSection=section;ensureHome(section)}
+ else if(portalState==='entering'&&section!==portalSection){portalSection=section;ensureHome(section);poseOnPortalPath(1);finishPortalEntry()}
+}
+window.addEventListener('popstate',followRoute);window.addEventListener('hashchange',followRoute);
+document.addEventListener('keydown',event=>{
+ if(event.key==='Escape'){
+  if(window.itongPanels.active)return;
+  if(!labMenu.hidden){setLabMenu(false);menuToggle.focus();event.preventDefault();return}
+  if(!settingsPanel.hidden){settingsPanel.hidden=true;settingsButton.setAttribute('aria-expanded','false');settingsButton.focus()}
+  else if(portalState==='home')beginPortalExit();else if(portalState==='entering'){poseOnPortalPath(1);finishPortalEntry()}
+ }
+ if((event.key==='l'||event.key==='L')&&portalState==='idle'&&event.target===yn)setLabLanguage(labLanguage==='zh'?'en':'zh');
+});
+setLabLanguage(readPreference('yutong-homepage-language','en'));applyQuality();applyLabMotion(readPreference("yutong-motion","on")!=="off",{persist:false});
+if(window.itongEarlyHome){beginPortalEntry(location.hash.slice(1)==='home'?null:location.hash.slice(1)||null,{immediate:true,historyUpdate:false})}
+else followRoute();
+
+// Keep the sculpt and its paint intact: a short, whole-body nod pivots above the pedestal.
+const labMascot=ze.getObjectByName('lulu-colored');
+let mascotStarted=-1;
+function greetMascot(){
+ if(portalState!=="idle"||window.itongPanels.active)return;
+ mascotStarted=mb?-1:performance.now();yn.dataset.mascot=mb?'still':'greeting';window.itongLabPersonality?.greet();
+}
+function updateMascot(){
+ if(!labMascot||mascotStarted<0)return;
+ const t=Math.min(1,(performance.now()-mascotStarted)/1450),envelope=Math.sin(Math.PI*t);
+ labMascot.rotation.x=mb?0:-.065*envelope*Math.sin(Math.PI*t*2);
+ labMascot.rotation.z=mb?0:.045*envelope;labMascot.position.y=.07+(mb?0:.014*envelope);
+ if(mb||t>=1){labMascot.rotation.set(0,0,0);labMascot.position.y=.07;mascotStarted=-1;yn.dataset.mascot='still'}
+}
+document.querySelector('#lab-greet').addEventListener('click',()=>{settingsPanel.hidden=true;settingsButton.setAttribute('aria-expanded','false');greetMascot()});
+function hitMascot(s){pointerRay(s);return !!labMascot&&doorRaycaster.intersectObject(labMascot,false).length>0}
 function pointerRay(s){
   const rect=yn.getBoundingClientRect();
   doorRaycaster.setFromCamera(new K((s.clientX-rect.left)/rect.width*2-1,1-(s.clientY-rect.top)/rect.height*2),Mn);
@@ -4435,15 +4546,16 @@ yn.addEventListener("pointerdown",s=>{if(s.isPrimary&&s.button===0)doorPointerSt
 yn.addEventListener("pointerup",s=>{
   const start=doorPointerStart;doorPointerStart=null;
   if(!start||start.id!==s.pointerId||Math.hypot(s.clientX-start.x,s.clientY-start.y)>6||portalState!=="idle")return;
+  if(hitMascot(s)){greetMascot();return}
   if(hitEntranceDoor(s)){entranceOpen=!entranceOpen;lastDoorClick=performance.now();yn.dataset.door=entranceOpen?"open":"closed"}
 });
 yn.addEventListener("pointercancel",()=>{doorPointerStart=null});
 yn.addEventListener("pointermove",s=>{
   if(doorPointerStart||portalState!=="idle")return;
-  yn.style.cursor=hitEntranceDoor(s)?"pointer":"grab";
+  yn.style.cursor=hitEntranceDoor(s)||hitMascot(s)?"pointer":"grab";
 });
 yn.addEventListener("pointerleave",()=>{yn.style.cursor="grab"});
-yn.dataset.door="closed";yn.dataset.portal="idle";
-yn.addEventListener("dblclick",()=>{if(portalState==="idle"&&performance.now()-Math.max(lastDoorClick,lastPortalClick)>550)Xm()});
+yn.dataset.door=entranceOpen?"open":"closed";yn.dataset.portal=portalState;
+yn.addEventListener("dblclick",()=>{if(portalState==="idle"&&performance.now()-Math.max(lastDoorClick,lastPortalClick,mascotStarted)>550)Xm()});
 yn.addEventListener("contextmenu",s=>s.preventDefault());
-yn.addEventListener("keydown",s=>{if(portalState!=="idle")return;let t=Mn.position.clone().sub(fe.target),e=new Ci().setFromVector3(t),n=!0;if(s.key==="ArrowLeft")e.theta-=.1;else if(s.key==="ArrowRight")e.theta+=.1;else if(s.key==="ArrowUp")e.phi=Math.max(.1,e.phi-.08);else if(s.key==="ArrowDown")e.phi=Math.min(Math.PI/2-.045,e.phi+.08);else if(s.key==="+"||s.key==="=")e.radius=Math.max(10,e.radius*.9);else if(s.key==="-")e.radius=Math.min(fe.maxDistance,e.radius/.9);else if(s.key==="Home"){Xm(),s.preventDefault();return}else n=!1;n&&(s.preventDefault(),Mn.position.copy(fe.target).add(new A().setFromSpherical(e)),fe.update())});var Nm=innerWidth/innerHeight;addEventListener("resize",()=>{let s=innerWidth/innerHeight;Mn.aspect=s,fe.maxDistance=Math.max(65,54/s),portalState==="idle"&&Nm<1!=s<1&&Td(),Nm=s,Mn.updateProjectionMatrix(),Hn.setSize(innerWidth,innerHeight),_s.setSize(innerWidth,innerHeight)});var Ym=!1;yn.addEventListener("webglcontextlost",s=>{s.preventDefault(),Ym=!0});yn.addEventListener("webglcontextrestored",()=>location.reload());function qm(s){if(requestAnimationFrame(qm),document.hidden||Ym||portalState==="home"){yd=s;return}let t=Math.min(.05,(s-yd)/1e3);yd=s,vd+=mb?0:t;if(portalState==="idle")fe.update();else advancePortal(t);let doorTarget=entranceOpen?1:0;doorProgress=mb?doorTarget:pr.damp(doorProgress,doorTarget,8,t);if(Math.abs(doorProgress-doorTarget)<.001)doorProgress=doorTarget;entranceDoors[0].position.x=-.78*doorProgress;entranceDoors[1].position.x=.78*doorProgress;let e=Math.PI/2-fe.getPolarAngle(),n=portalState==="idle"?1-pr.smoothstep(e,.77,1.1):0;Fo=pr.damp(Fo,n,5,t),vr.visible=Fo>.025;for(let i of Wm)i.opacity=Fo*i.userData.initialOpacity,i.transparent=i.opacity<.995,i.depthWrite=i.opacity>.97;db.material.uniforms.time.value=vd,fb(vd),_s.render(),yn.dataset.sceneReady!=="true"&&(yn.dataset.sceneReady="true",window.dispatchEvent(new Event("lab:ready"))),bd++,s-Md>1500&&(Um=Math.round(bd*1e3/(s-Md)),bd=0,Md=s,yn.dataset.sceneReady="true",yn.dataset.camera=Mn.position.toArray().map(i=>i.toFixed(2)).join(","),yn.dataset.roof=Fo.toFixed(2),yn.dataset.fps=String(Um),yn.dataset.drawCalls=String(Hn.info.render.calls))}requestAnimationFrame(qm);})();
+yn.addEventListener("keydown",s=>{if(portalState!=="idle")return;let t=Mn.position.clone().sub(fe.target),e=new Ci().setFromVector3(t),n=!0;if(s.key==="ArrowLeft")e.theta-=.1;else if(s.key==="ArrowRight")e.theta+=.1;else if(s.key==="ArrowUp")e.phi=Math.max(.1,e.phi-.08);else if(s.key==="ArrowDown")e.phi=Math.min(Math.PI/2-.045,e.phi+.08);else if(s.key==="+"||s.key==="=")e.radius=Math.max(10,e.radius*.9);else if(s.key==="-")e.radius=Math.min(fe.maxDistance,e.radius/.9);else if(s.key==="Home"){Xm(),s.preventDefault();return}else n=!1;n&&(s.preventDefault(),Mn.position.copy(fe.target).add(new A().setFromSpherical(e)),fe.update())});var Nm=innerWidth/innerHeight;addEventListener("resize",()=>{let s=innerWidth/innerHeight;Mn.aspect=s,fe.maxDistance=Math.max(65,54/s),portalState==="idle"&&Nm<1!=s<1&&Td(),Nm=s,Mn.updateProjectionMatrix(),Hn.setSize(innerWidth,innerHeight),_s.setSize(innerWidth,innerHeight)});var Ym=!1;yn.addEventListener("webglcontextlost",s=>{s.preventDefault(),Ym=!0});yn.addEventListener("webglcontextrestored",()=>location.reload());function qm(s){if(requestAnimationFrame(qm),document.hidden||Ym||(portalState==="home"&&yn.dataset.sceneReady==="true")){yd=s;return}let t=Math.min(.05,(s-yd)/1e3);yd=s,vd+=mb?0:t;if(portalState==="idle")fe.update();else advancePortal(t);let doorTarget=entranceOpen?1:0;doorProgress=mb?doorTarget:pr.damp(doorProgress,doorTarget,8,t);if(Math.abs(doorProgress-doorTarget)<.001)doorProgress=doorTarget;entranceDoors[0].position.x=-.78*doorProgress;entranceDoors[1].position.x=.78*doorProgress;let e=Math.PI/2-fe.getPolarAngle(),n=portalState==="idle"?1-pr.smoothstep(e,.77,1.1):0;Fo=pr.damp(Fo,n,5,t),vr.visible=Fo>.025;for(let i of Wm)i.opacity=Fo*i.userData.initialOpacity,i.transparent=i.opacity<.995,i.depthWrite=i.opacity>.97;db.material.uniforms.time.value=vd,fb(vd),updateMascot(),updateExperience(t),(labQuality==="light"?Hn.render(ze,Mn):_s.render()),yn.dataset.sceneReady!=="true"&&(yn.dataset.sceneReady="true",window.dispatchEvent(new Event("lab:ready"))),bd++,s-Md>1500&&(Um=Math.round(bd*1e3/(s-Md)),bd=0,Md=s,yn.dataset.sceneReady="true",yn.dataset.camera=Mn.position.toArray().map(i=>i.toFixed(2)).join(","),yn.dataset.roof=Fo.toFixed(2),yn.dataset.fps=String(Um),yn.dataset.drawCalls=String(Hn.info.render.calls))}requestAnimationFrame(qm);})();
