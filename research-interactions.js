@@ -80,7 +80,7 @@
     });
   }
   const luluLink=document.createElement('a');luluLink.href='./index.html#lab';luluLink.dataset.labReturn='';luluLink.className='footer-lulu';
-  luluLink.innerHTML='<svg viewBox="0 0 68 56" fill="none" aria-hidden="true"><ellipse cx="33" cy="35" rx="24" ry="17" fill="#bc9670"/><path d="M15 39v9m36-9v9" stroke="#ac835d" stroke-width="9" stroke-linecap="round"/><ellipse cx="31" cy="22" rx="20" ry="15" fill="#cda87e"/><ellipse cx="14" cy="12" rx="5" ry="6" fill="#bc9670"/><ellipse cx="44" cy="12" rx="5" ry="6" fill="#bc9670"/><ellipse cx="31" cy="29" rx="12" ry="6" fill="#ac835d"/><circle cx="23" cy="22" r="2" fill="#242622"/><circle cx="39" cy="22" r="2" fill="#242622"/><path d="m29 30 2 1 2-1" stroke="#44372b" stroke-width="1.5" stroke-linecap="round"/><circle cx="31" cy="7" r="6" fill="#e9a54c"/><path d="M31 1c4-3 7-1 7-1-2 3-5 3-7 1Z" fill="#7ea675"/></svg><span><strong></strong><small></small></span>';
+  luluLink.innerHTML='<img src="./lulu-avatar.png" width="56" height="56" alt="" loading="lazy" decoding="async"><span><strong></strong><small></small></span>';
   document.querySelector('.footer').insertAdjacentElement('beforebegin',luluLink);
   const demo=window.itongPenelopeDemo?.mount(document.querySelector('.paper-art-penelope'),{language:lang(),motionEnabled:motion});
   function refreshLabels(){
