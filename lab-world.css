@@ -1,0 +1,14 @@
+.season-switch{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);display:flex;gap:5px;padding:10px;border:1px solid #9acaba45;border-radius:15px;background:#102633eb;backdrop-filter:blur(18px);z-index:25;box-shadow:0 12px 30px #0003;color:#cbe5db}.season-switch legend{font:8px ui-monospace,monospace;letter-spacing:.16em;padding:0 7px;color:#a7c6bc}.season-switch button{border:1px solid transparent;border-radius:8px;color:#adc5c6;background:transparent;font:500 11px system-ui,sans-serif;padding:10px 14px;min-height:40px;cursor:pointer}.season-switch button:hover{background:#acd7c214}.season-switch button[aria-pressed=true]{background:#acd7c21f;border-color:#acd7c258;color:#e0f6e9}.season-switch[hidden]{display:none!important}.scene-panel-open .season-switch{display:none}.season-switch button:focus-visible{outline:2px solid #b8efd9;outline-offset:2px}@media(max-width:650px){.season-switch{bottom:81px;width:max-content;max-width:calc(100% - 32px);padding:7px}.season-switch button{font-size:10px;padding:9px 10px}.lab-guide{bottom:162px!important}}@media(prefers-reduced-motion:reduce){.season-switch *{transition:none}}
+/* Light skies need dark scene labels; the dark controls retain their own ink. */
+:root:is([data-season="spring"],[data-season="autumn"]) .lab-identity{color:#173441}
+:root:is([data-season="spring"],[data-season="autumn"]) .lab-identity .lab-mark{color:#215548}
+:root:is([data-season="spring"],[data-season="autumn"]) .lab-identity small,
+:root:is([data-season="spring"],[data-season="autumn"]) .lab-guide{color:#203d49}
+.season-switch legend{background:#102633;border-radius:5px;padding:3px 7px}
+
+.lab-identity{filter:drop-shadow(0 1px 5px #07131feb)}.lab-guide{padding:6px 10px;border-radius:7px;background:#102633b8;color:#dce8ec!important}
+
+/* Keep the street foreground unobstructed; weather joins the upper control zone. */
+.season-switch{left:auto;right:24px;top:88px;bottom:auto;transform:none;padding:7px;border-radius:12px;gap:3px}
+.season-switch button{padding:7px 11px;min-height:36px}
+@media(max-width:650px){.season-switch{left:auto;right:14px;top:96px;bottom:auto;transform:none;max-width:calc(100% - 28px);padding:5px}.season-switch button{padding:7px 9px;min-height:36px}.lab-guide{bottom:118px!important}}

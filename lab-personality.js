@@ -33,6 +33,7 @@
   enabled=value;error=false;
   try{if(enabled){if(!context)build();await context.resume()}fade()}catch{error=true;enabled=false}render();
  }
+ window.addEventListener('itong:season-changed',event=>{const summer=event.detail.season==='summer';if(!summer)setSound(false);for(const el of [toggle,homeToggle,labToggle])el.disabled=!summer;});
  toggle.addEventListener('change',()=>setSound(toggle.checked));homeToggle.addEventListener('click',()=>setSound(!enabled));labToggle.addEventListener('click',()=>setSound(!enabled));
  document.addEventListener('visibilitychange',()=>{if(context&&enabled&&!document.hidden)context.resume().then(fade).catch(()=>{});else fade()});
  window.itongLabPersonality={

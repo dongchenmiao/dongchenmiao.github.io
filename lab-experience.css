@@ -26,3 +26,10 @@
 }
 
 @media(prefers-reduced-motion:reduce){#home-overlay,#home-overlay.is-open{transition:none}}
+
+/* Named, compact wayfinding remains readable without guessing icon meanings. */
+.lab-hotspot-penelope .hotspot-label,.lab-hotspot-research .hotspot-label{opacity:1;transform:translateX(-50%)}
+.lab-hotspot .hotspot-label{font-size:10px;padding:5px 8px;box-shadow:0 3px 12px #07182440}
+.lab-hotspot:focus-visible{outline:2px solid #d6f7e8;outline-offset:3px;border-radius:24px}
+
+.hotspot-stem{position:absolute;left:50%;top:50%;height:1px;background:currentColor;opacity:.55;transform-origin:0 50%;pointer-events:none;z-index:-1}
