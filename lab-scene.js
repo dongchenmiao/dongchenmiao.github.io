@@ -4143,6 +4143,25 @@ function buildLabLuluModel(THREE){
  const geometry=new THREE.BufferGeometry();
  geometry.setAttribute('position',new THREE.BufferAttribute(new Float32Array(decode(source.positions)),3));
  geometry.setIndex(new THREE.BufferAttribute(new Uint16Array(decode(source.indices)),1));
+ // Smooth only the scanned leg-opening seams; retain the original mesh and animation.
+ const positions=geometry.attributes.position.array,original=positions.slice();
+ const neighbors=Array.from({length:positions.length/3},()=>new Set());
+ const ids=geometry.index.array;
+ for(let i=0;i<ids.length;i+=3)for(let a=0;a<3;a++)for(let b=0;b<3;b++)if(a!==b)neighbors[ids[i+a]].add(ids[i+b]);
+ for(let pass=0;pass<4;pass++){
+  const previous=positions.slice();
+  for(let i=0;i<neighbors.length;i++){
+   const x=original[i*3],y=original[i*3+1];
+   const distance=Math.abs(y-(.40*Math.abs(x)+.03));
+   const weight=Math.max(0,1-distance/.048);
+   if(!weight||y>.32||Math.abs(x)<.13||!neighbors[i].size)continue;
+   for(let axis=0;axis<3;axis++){
+    let mean=0;for(const j of neighbors[i])mean+=previous[j*3+axis];mean/=neighbors[i].size;
+    const value=previous[i*3+axis]+.38*weight*(mean-previous[i*3+axis]);
+    positions[i*3+axis]=Math.max(original[i*3+axis]-.010,Math.min(original[i*3+axis]+.010,value));
+   }
+  }
+ }
  geometry.computeVertexNormals();geometry.computeBoundingBox();
  const rgb=hex=>new THREE.Color(hex).toArray().map(v=>v.toFixed(6)).join(',');
  const material=new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.57,metalness:0});
@@ -4162,8 +4181,13 @@ function buildLabLuluModel(THREE){
     vec3 dark=vec3(${rgb('#292523')});
     vec3 cream=vec3(${rgb('#fff7df')});
     vec3 c=yellow;
-    float shorts=(1.0-smoothstep(.562,.572,p.y))*smoothstep(.13,.15,p.y)*(1.0-smoothstep(.58,.595,abs(p.x)));
-    shorts*=1.0-smoothstep(.51,.54,abs(p.x))*smoothstep(.02,.08,p.z)*smoothstep(.42,.46,p.y);
+    // Follow the sculpted sloping leg openings, not a horizontal band across the thighs.
+    float shortsHem=.40*abs(p.x)+.03;
+    float hemAA=max(.002,fwidth(p.y-shortsHem));
+    float shorts=(1.0-smoothstep(.562,.572,p.y))*smoothstep(shortsHem-hemAA,shortsHem+hemAA,p.y)*(1.0-smoothstep(.58,.595,abs(p.x)));
+    // Exclude each rounded hand in 3D, including its back and underside.
+    float handDistance=length((vec3(abs(p.x),p.y,p.z)-vec3(.62,.61,-.08))/vec3(.145,.155,.21));
+    shorts*=smoothstep(.99,1.05,handDistance);
     c=mix(c,orange,shorts);
     float front=smoothstep(.22,.28,p.z);
     float muzzle=1.0-smoothstep(.78,1.045,length((p.xy-vec2(0.0,1.25))/vec2(.605,.37)));
@@ -4207,7 +4231,7 @@ function buildLabLuluModel(THREE){
    }`);
   shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\ndiffuseColor.rgb=luluPaint(vPaintPosition);');
  };
- material.customProgramCacheKey=()=> 'lulu-color-v7-blink';
+ material.customProgramCacheKey=()=> 'lulu-color-v7-hem-hands';
  const model=new THREE.Mesh(geometry,material);model.castShadow=true;model.receiveShadow=true;
  return model;
 }
