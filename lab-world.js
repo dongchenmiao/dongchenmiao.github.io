@@ -850,14 +850,15 @@
    }
   }
   scene.userData.roadsideDesign={retiredRoadsideStrips,roadEdgeLines,vergePlanters};
-  // A soft architectural cutaway preserves free orbit instead of forcing a
-  // camera jump. Only a building that intercepts the central lab view fades.
+  // Keep the western landmarks solid from every orbit distance and angle.
+  // Their silhouettes are city content, not removable foreground panels. Other
+  // districts retain the existing lab cutaway; normal depth occlusion still applies.
   const fadedOwners=new Set(),focus=new T.Vector3(-1,2.2,-1.5),focusNdc=new T.Vector3(),focusSamples=[focus,new T.Vector3(-5,1,-5),new T.Vector3(3,1,-5),new T.Vector3(-5,3,1.6),new T.Vector3(3,3,1.6)];
   const segmentHits=(from,to,v,pad=0)=>{let near=0,far=1;for(let k=0;k<3;k++){const axis=k===0?'x':k===1?'y':'z',o=from[axis],d=to[axis]-o;if(Math.abs(d)<1e-7){if(o<v.min[k]-pad||o>v.max[k]+pad)return false;}else{let a=(v.min[k]-pad-o)/d,b=(v.max[k]+pad-o)/d;if(a>b){const t=a;a=b;b=t;}near=Math.max(near,a);far=Math.min(far,b);}}return near<=far&&far>0&&near<.98;};
   const occludingVolumes=scene.userData.clearanceVolumes.filter(v=>cityGroups.some(g=>g.owner===v.owner));
   scene.userData.isCityOccluded=(from,to)=>occludingVolumes.some(v=>!fadedOwners.has(v.owner)&&segmentHits(from,to,v));
-  const updateCityCutaway=camera=>{if(!camera)return;let coreInView=true;if(camera.isCamera){focusNdc.copy(focus).project(camera);coreInView=Math.abs(focusNdc.x)<.85&&Math.abs(focusNdc.y)<.9&&focusNdc.z>-1&&focusNdc.z<1;}for(const district of cityGroups){const hit=coreInView&&district.volumes.some(v=>focusSamples.some(point=>segmentHits(camera.position,point,v,district.opacity===0?1.4:.55)));const target=hit?0:1;district.opacity=target; // direct response to camera, no autonomous motion
-   if(hit)fadedOwners.add(district.owner);else fadedOwners.delete(district.owner);district.group.visible=!hit;district.snow.visible=!hit;for(const entry of landmarkLights)if(entry.owner===district.owner)entry.light.intensity=hit?0:entry.power*(current==='winter'?.83:1);for(const o of district.renderables)o.castShadow=hit?false:o.userData.originalCastShadow;
+  const updateCityCutaway=camera=>{if(!camera)return;let coreInView=true;if(camera.isCamera){focusNdc.copy(focus).project(camera);coreInView=Math.abs(focusNdc.x)<.85&&Math.abs(focusNdc.y)<.9&&focusNdc.z>-1&&focusNdc.z<1;}for(const district of cityGroups){const hit=!(district.owner==='gulou'||district.owner==='fuzimiao')&&coreInView&&district.volumes.some(v=>focusSamples.some(point=>segmentHits(camera.position,point,v,fadedOwners.has(district.owner)?1.4:.55)));const target=hit?0:1;district.opacity=target; // direct response to camera, no autonomous motion
+   if(hit)fadedOwners.add(district.owner);else fadedOwners.delete(district.owner);district.group.visible=target>0;district.snow.visible=target>0;for(const entry of landmarkLights)if(entry.owner===district.owner)entry.light.intensity=hit?0:entry.power*(current==='clear'?0:current==='winter'?.83:1);for(const o of district.renderables)o.castShadow=hit?false:o.userData.originalCastShadow;
    for(const m of district.materials){m.opacity=m.userData.baseOpacity*target;const transparent=m.userData.baseTransparent||hit;if(m.transparent!==transparent){m.transparent=transparent;m.needsUpdate=true;}m.depthWrite=hit?false:m.userData.baseDepthWrite;}
   }};
   scene.userData.updateCityCutaway=updateCityCutaway;
@@ -915,16 +916,55 @@ merge(spring);merge(winter);merge(roofSnow);roofSnow.traverse(o=>{if(o.material)
   let seed=84;const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
   for(let j=0;j<count;j++){const near=j<650,x=near?random()*31-18:random()*200-103,z=near?random()*27-16:random()*200-120,y=roofAt(x,z);pos[j*3]=x;pos[j*3+1]=random();pos[j*3+2]=z;phase[j]=random();floorY[j]=y;ceiling[j]=Math.max(near?14:60,y+8);}
   const geo=new T.BufferGeometry();geo.setAttribute('position',new T.BufferAttribute(pos,3));geo.setAttribute('phase',new T.BufferAttribute(phase,1));geo.setAttribute('floorY',new T.BufferAttribute(floorY,1));geo.setAttribute('ceiling',new T.BufferAttribute(ceiling,1));
-  const snowMaterial=new T.ShaderMaterial({uniforms:{time:{value:0},pixelRatio:{value:Math.min(window.devicePixelRatio||1,1.7)}},transparent:true,depthWrite:false,vertexShader:'attribute float phase;attribute float floorY;attribute float ceiling;uniform float time;uniform float pixelRatio;varying float fade;void main(){vec3 p=position;float span=ceiling-floorY;p.y=ceiling-mod(position.y*span+time*(.5+phase*.55),span);p.x+=sin(time*.15+phase*6.)*.12;fade=smoothstep(floorY,floorY+.7,p.y)*(1.-smoothstep(ceiling-3.,ceiling,p.y));vec4 mv=modelViewMatrix*vec4(p,1.);gl_Position=projectionMatrix*mv;gl_PointSize=clamp((2.+phase*2.)*42./max(1.,-mv.z),1.25+phase*.75,4.2)*pixelRatio;}',fragmentShader:'varying float fade;void main(){float d=length(gl_PointCoord-.5);float a=(1.-smoothstep(.18,.5,d))*fade*.85;if(a<.02)discard;gl_FragColor=vec4(.87,.94,1.,a);}'});
+  const snowMaterial=new T.ShaderMaterial({uniforms:{time:{value:0},weatherFade:{value:1},pixelRatio:{value:Math.min(window.devicePixelRatio||1,1.7)}},transparent:true,depthWrite:false,vertexShader:'attribute float phase;attribute float floorY;attribute float ceiling;uniform float time;uniform float pixelRatio;varying float fade;void main(){vec3 p=position;float span=ceiling-floorY;p.y=ceiling-mod(position.y*span+time*(.5+phase*.55),span);p.x+=sin(time*.15+phase*6.)*.12;fade=smoothstep(floorY,floorY+.7,p.y)*(1.-smoothstep(ceiling-3.,ceiling,p.y));vec4 mv=modelViewMatrix*vec4(p,1.);gl_Position=projectionMatrix*mv;gl_PointSize=clamp((2.+phase*2.)*42./max(1.,-mv.z),1.25+phase*.75,4.2)*pixelRatio;}',fragmentShader:'uniform float weatherFade;varying float fade;void main(){float d=length(gl_PointCoord-.5);float a=(1.-smoothstep(.18,.5,d))*fade*.85;if(a<.02)discard;gl_FragColor=vec4(.87,.94,1.,a*weatherFade);}'});
   const snow=new T.Points(geo,snowMaterial);snow.name='seasonal-snowflakes';snow.frustumCulled=false;scene.add(snow);
   // A single low-frequency storm dome follows the shared reduced-motion clock.
-  const cloudMaterial=new T.ShaderMaterial({uniforms:{time:{value:0}},side:T.BackSide,transparent:true,depthWrite:false,
+  const cloudMaterial=new T.ShaderMaterial({uniforms:{time:{value:0},strength:{value:1}},side:T.BackSide,transparent:true,depthWrite:false,
    vertexShader:'varying vec3 sky;void main(){sky=normalize(position);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
-   fragmentShader:'uniform float time;varying vec3 sky;float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x),mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.)),f.x),f.y);}void main(){vec2 p=sky.xz/max(.25,sky.y+.3)*2.8+vec2(time*.007,time*.003);float n=noise(p)*.58+noise(p*2.1)*.28+noise(p*4.2)*.14;float a=smoothstep(.16,.53,n)*smoothstep(-.02,.16,sky.y)*.84;vec3 c=mix(vec3(.025,.044,.065),vec3(.12,.16,.19),n);gl_FragColor=vec4(c,a);\n#include <tonemapping_fragment>\n#include <colorspace_fragment>\n}'});
+   fragmentShader:'uniform float time;uniform float strength;varying vec3 sky;float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x),mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.)),f.x),f.y);}void main(){vec2 p=sky.xz/max(.25,sky.y+.3)*2.8+vec2(time*.007,time*.003);float n=noise(p)*.58+noise(p*2.1)*.28+noise(p*4.2)*.14;float a=smoothstep(.16,.53,n)*smoothstep(-.02,.16,sky.y)*.84;vec3 c=mix(vec3(.025,.044,.065),vec3(.12,.16,.19),n);gl_FragColor=vec4(c,a*strength);\n#include <tonemapping_fragment>\n#include <colorspace_fragment>\n}'});
   const clouds=new T.Mesh(new T.SphereGeometry(170,40,20),cloudMaterial);clouds.name='summer-storm-clouds';clouds.position.set(-3,0,-10);clouds.renderOrder=-10;scene.add(clouds);
+  // Daylight dome: one opaque sky draw, with the sun aligned to the existing key light.
+  const sunPosition=new T.Vector3(-95,15,-110);
+  const sunDirection=sunPosition.clone().normalize();
+  const clearSkyMaterial=new T.ShaderMaterial({side:T.BackSide,depthWrite:false,
+   uniforms:{sunDirection:{value:sunDirection.clone()},daylight:{value:1},nightColor:{value:new T.Color("#131f30")}},
+   vertexShader:'varying vec3 sky;void main(){sky=normalize(position);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+   fragmentShader:`varying vec3 sky;uniform vec3 sunDirection;uniform float daylight;uniform vec3 nightColor;
+   float clearHash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+   float clearNoise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(clearHash(i),clearHash(i+vec2(1.,0.)),f.x),mix(clearHash(i+vec2(0.,1.)),clearHash(i+vec2(1.)),f.x),f.y);}
+   void main(){
+    vec3 direction=normalize(sky);float height=max(0.,direction.y);
+    vec3 color=mix(vec3(.27,.56,.82),vec3(.025,.22,.58),pow(height,.65));
+    vec2 cloudUV=direction.xz/max(.17,direction.y+.22)*3.3;
+    float billow=clearNoise(cloudUV)*.65+clearNoise(cloudUV*2.05)*.25+clearNoise(cloudUV*4.1)*.10;
+    float cloud=smoothstep(.61,.76,billow)*smoothstep(-.035,.06,direction.y)*(1.-smoothstep(.65,.9,direction.y));
+    vec3 cloudColor=mix(vec3(.63,.74,.79),vec3(1.22,1.22,1.15),smoothstep(.61,.78,billow));
+    color=mix(color,cloudColor,cloud);
+    float angle=dot(direction,sunDirection);
+    // Solar disk and atmospheric scattering live in the same celestial dome.
+    // A soft angular edge avoids a flat sphere pasted in front of the clouds.
+    float disc=smoothstep(cos(.010),cos(.006),angle);
+    float halo=pow(max(0.,angle),2400.);
+    float haze=pow(max(0.,angle),150.);
+    color+=vec3(1.,.78,.45)*(halo*.55+haze*.11)*daylight;
+    color=mix(color,vec3(5.,4.6,3.8),disc*(1.-cloud*.65)*daylight);
+    float dusk=1.-daylight;
+    color=mix(color,vec3(.16,.10,.095),dusk*(1.-dusk)*1.1*(1.-height));
+    color=mix(color,nightColor,smoothstep(0.,1.,dusk));
+    gl_FragColor=vec4(color,1.);
+    #include <tonemapping_fragment>
+    #include <colorspace_fragment>
+   }`});
+  const clearSky=new T.Mesh(new T.SphereGeometry(170,40,20),clearSkyMaterial);
+  clearSky.name='clear-day-sun-sky';clearSky.renderOrder=-11;clearSky.frustumCulled=false;scene.add(clearSky);
+  // Celestial sun: camera translation cancels finite-distance parallax.
+  // Its world-space bearing is identical to the directional light, at every orbit.
+  const sunDisc=new T.Object3D(); // Directional marker; the dome renders the sun and halo together.
+  sunDisc.name='clear-day-sun-disc';sunDisc.position.copy(sunPosition);scene.add(sunDisc);
+
   const starPositions=[],starSizes=[],starPhases=[];for(let j=0;j<2000;j++){const a=random()*Math.PI*2,y=.015+Math.pow(random(),1.6)*.985,r=Math.sqrt(1-y*y);starPositions.push(Math.cos(a)*r*140-3,y*140,Math.sin(a)*r*140-10);starSizes.push(j%17===0?3.2:1.15+random()*1.25);starPhases.push(random()*6.28);}
   const starGeo=new T.BufferGeometry();starGeo.setAttribute('position',new T.Float32BufferAttribute(starPositions,3));starGeo.setAttribute('size',new T.Float32BufferAttribute(starSizes,1));starGeo.setAttribute('phase',new T.Float32BufferAttribute(starPhases,1));
-  const starMaterial=new T.ShaderMaterial({uniforms:{time:{value:0},pixelRatio:{value:Math.min(window.devicePixelRatio||1,2)}},transparent:true,depthWrite:false,vertexShader:'attribute float size;attribute float phase;uniform float time;uniform float pixelRatio;varying float glow;void main(){glow=.88+.12*sin(time*.17+phase);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);gl_PointSize=size*pixelRatio;}',fragmentShader:'varying float glow;void main(){float a=(1.-smoothstep(.05,.5,length(gl_PointCoord-.5)))*glow;if(a<.02)discard;gl_FragColor=vec4(.88,.93,1.,a);}'});
+  const starMaterial=new T.ShaderMaterial({uniforms:{time:{value:0},weatherFade:{value:1},pixelRatio:{value:Math.min(window.devicePixelRatio||1,2)}},transparent:true,depthWrite:false,vertexShader:'attribute float size;attribute float phase;uniform float time;uniform float pixelRatio;varying float glow;void main(){glow=.88+.12*sin(time*.17+phase);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);gl_PointSize=size*pixelRatio;}',fragmentShader:'uniform float weatherFade;varying float glow;void main(){float a=(1.-smoothstep(.05,.5,length(gl_PointCoord-.5)))*glow;if(a<.02)discard;gl_FragColor=vec4(.88,.93,1.,a*weatherFade);}'});
   const stars=new T.Points(starGeo,starMaterial);stars.name='winter-starfield';stars.frustumCulled=false;scene.add(stars);
   // A restrained masonry finish in world units survives geometry merging and
   // district cutaways. No images, new meshes, render passes or shadow maps.
@@ -1009,7 +1049,7 @@ merge(spring);merge(winter);merge(roofSnow);roofSnow.traverse(o=>{if(o.material)
   const colors=['#bdc7bc','#b88b6f','#638c91','#c9b784','#8495ad','#9a6c68'];
   for(let i=0;i<6;i++){const lane=trafficLanes[i%2];trafficCars.push({lane:i%2,distance:lane.length*(Math.floor(i/2)/3+(i%2)*.13),speed:0,laps:0});for(const p of parts)if(p.paint)p.mesh.setColorAt(i,new T.Color(colors[i]));}
   const trafficDummy=new T.Object3D();
-  const placeTraffic=()=>{for(let i=0;i<6;i++){const car=trafficCars[i],pose=trafficLanes[car.lane].pose(car.distance);car.pose=pose;for(const p of parts){for(let j=0;j<p.count;j++){const x=p.wheels?(j%2?1:-1)*.365:p.lights?(j%2?1:-1)*.22:0,z=p.wheels?(j<2?-.48:.48):p.z;trafficDummy.position.set(pose.x+Math.cos(pose.yaw)*x+Math.sin(pose.yaw)*z,p.y+(current==='winter'?.13:0),pose.z-Math.sin(pose.yaw)*x+Math.cos(pose.yaw)*z);trafficDummy.rotation.set(0,pose.yaw,0);trafficDummy.updateMatrix();p.mesh.setMatrixAt(i*p.count+j,trafficDummy.matrix);}}}for(const p of parts)p.mesh.instanceMatrix.needsUpdate=true;};
+  const placeTraffic=()=>{for(let i=0;i<6;i++){const car=trafficCars[i],pose=trafficLanes[car.lane].pose(car.distance);car.pose=pose;for(const p of parts){for(let j=0;j<p.count;j++){const x=p.wheels?(j%2?1:-1)*.365:p.lights?(j%2?1:-1)*.22:0,z=p.wheels?(j<2?-.48:.48):p.z;trafficDummy.position.set(pose.x+Math.cos(pose.yaw)*x+Math.sin(pose.yaw)*z,p.y+.13*snowBlend,pose.z-Math.sin(pose.yaw)*x+Math.cos(pose.yaw)*z);trafficDummy.rotation.set(0,pose.yaw,0);trafficDummy.updateMatrix();p.mesh.setMatrixAt(i*p.count+j,trafficDummy.matrix);}}}for(const p of parts)p.mesh.instanceMatrix.needsUpdate=true;};
   let trafficClock=0,lastTrafficTime=0;
   const reducedTraffic=window.matchMedia?.('(prefers-reduced-motion: reduce)');
   const updateTraffic=(time,cold)=>{let remaining=Math.min(.1,Math.max(0,time-lastTrafficTime));lastTrafficTime=time;if(reducedTraffic?.matches)remaining=0;
@@ -1022,12 +1062,94 @@ merge(spring);merge(winter);merge(roofSnow);roofSnow.traverse(o=>{if(o.material)
    }placeTraffic();
   };
   scene.userData.traffic={lanes:trafficLanes,cars:trafficCars,halfWidth:.43,halfLength:.80,update:updateTraffic,group:trafficGroup};
-  let handles=null,current='summer';try{const saved=localStorage.getItem('itong-season');if(saved==='winter')current='winter';else current='summer';if(saved==='spring'||saved==='autumn')localStorage.setItem('itong-season','summer');}catch{}
-  const apply=()=>{placeTraffic();if(!handles)return;const summer=current==='summer',cold=current==='winter';handles.rain.visible=summer;clouds.visible=summer;stars.visible=cold;riverUniforms.waterColor.value.set(cold?'#354958':summer?'#263e50':'#355970');riverUniforms.skyColor.value.set(cold?'#70869e':summer?'#8498aa':'#becfdb');scene.traverse(o=>{if(o.name==='seasonal-wet-marks')o.visible=summer;});handles.wet.visible=summer&&handles.getQuality?.()!=='light';snow.visible=cold;snowCaps.visible=cold;roofSnow.visible=cold;winter.visible=cold;spring.visible=current==='spring';summerCrowns.visible=summer;autumn.visible=current==='autumn';
-   scene.background.set(summer?'#131f30':cold?'#1b3047':current==='autumn'?'#9caaa7':'#b7c8c7');handles.ground.material.color.set(summer?'#131f30':cold?'#1b3047':current==='autumn'?'#9caaa7':'#b7c8c7');handles.key.color.set(summer?'#a6c8ed':cold?'#d9e8ff':current==='autumn'?'#ffd1a2':'#fff0c9');handles.key.intensity=summer?1.22:cold?1.3:2.1;handles.fill.intensity=summer?1.12:cold?1.0:.55;handles.renderer.toneMappingExposure=summer?1.08:cold?1.1:1.05;scene.traverse(o=>{if(o.isHemisphereLight)o.intensity=cold?1.35:1.45;});for(const entry of landmarkLights)entry.light.intensity=entry.power*(cold?.83:1);
+  let handles=null,current='summer';try{const saved=localStorage.getItem('itong-season');if(saved==='winter'||saved==='clear')current=saved;else current='summer';if(saved==='spring'||saved==='autumn')localStorage.setItem('itong-season','summer');}catch{}
+  // Keep the rain/snow palette intact. Sunny surfaces use their own dry albedo,
+  // while neutral sky fill opens shaded facades without flattening sun shadows.
+  const daylightMaterials=new Map(),nightEmitters=new Map(),originalStreetLights=new Map(),originalGlowMaterials=new Map();
+  scene.traverse(o=>{if(o.name==="slab-street-lamp-light")originalStreetLights.set(o,o.intensity);if(o.name==="slab-street-lamp-bulb")nightEmitters.set(o.material,o.material.emissiveIntensity);if(o.name==="slab-night-glow")originalGlowMaterials.set(o.material,o.material.opacity);});
+  neighborhood.traverse(o=>{for(const m of (Array.isArray(o.material)?o.material:[o.material]))if(m?.emissive&&m.emissiveIntensity>0&&m.emissive.getHex()!==0&&!m.map)nightEmitters.set(m,m.emissiveIntensity);});
+  // Sunny and rainy weather share the exact same paving albedo and texture.
+  // Only illumination and the existing reflector's wetness change.
+  const dryPalette=new Map();
+  const prepareDaylight=()=>{
+   scene.traverse(o=>{for(const m of (Array.isArray(o.material)?o.material:[o.material])){
+    if(!m?.color||daylightMaterials.has(m))continue;
+    const hex=m.color.getHexString(),dry=dryPalette.get(hex);
+    if(!dry&&!m.userData.surfaceKind&&!nightEmitters.has(m))continue;
+    const color=m.color.clone(),day=color.clone();
+    if(nightEmitters.has(m))day.set('#8ca9ad');
+    else if(dry)day.set(dry);
+    else if(m.userData.surfaceKind==='tile')day.lerp(new T.Color('#81918c'),.30);
+    else if(m.userData.surfaceKind==='glazing')day.lerp(new T.Color('#a1c4d0'),.24);
+    // Masonry and paving retain their authored material color in every weather state.
+    daylightMaterials.set(m,{color,day,roughness:m.roughness});
+   }});
+  };
+  scene.userData.daylight={sunDirection,sunPosition,sunDisc,materials:daylightMaterials,nightEmitters,originalStreetLights,originalGlowMaterials};
+  const apply=()=>{placeTraffic();if(!handles)return;const summer=current==='summer',cold=current==='winter',clear=current==='clear';clearSky.visible=clear;sunDisc.visible=clear;for(const[l,p]of originalStreetLights)l.intensity=clear?0:p;for(const[m,o]of originalGlowMaterials)m.opacity=clear?0:o;for(const [m,power] of nightEmitters)m.emissiveIntensity=clear?0:power;prepareDaylight();for(const [m,base] of daylightMaterials){m.color.copy(clear?base.day:base.color);if(base.roughness!==undefined)m.roughness=clear&&dryPalette.has(base.color.getHexString())?.94:base.roughness;}handles.rain.visible=summer;clouds.visible=summer;stars.visible=cold;riverUniforms.waterColor.value.set(cold?'#354958':summer?'#263e50':'#355970');riverUniforms.skyColor.value.set(cold?'#70869e':summer?'#8498aa':'#becfdb');scene.traverse(o=>{if(o.name==='seasonal-wet-marks')o.visible=summer;});handles.wet.visible=summer&&handles.getQuality?.()!=='light';if(handles.wet.material?.uniforms?.wetness)handles.wet.material.uniforms.wetness.value=clear?0:1;snow.visible=cold;snowCaps.visible=cold;roofSnow.visible=cold;winter.visible=cold;spring.visible=current==='spring';summerCrowns.visible=summer||clear;autumn.visible=current==='autumn';
+   scene.background.set(clear?'#a6d2e8':summer?'#131f30':cold?'#1b3047':current==='autumn'?'#9caaa7':'#b7c8c7');handles.ground.material.color.set(clear?'#a6d2e8':summer?'#131f30':cold?'#1b3047':current==='autumn'?'#9caaa7':'#b7c8c7');handles.key.color.set(clear?'#fff7e6':summer?'#a6c8ed':cold?'#d9e8ff':current==='autumn'?'#ffd1a2':'#fff0c9');handles.key.target.position.set(-3,0,-10);if(!handles.key.target.parent)scene.add(handles.key.target);handles.key.target.updateMatrixWorld();handles.key.position.copy(clear?sunDirection:new T.Vector3(-8,19,7).normalize()).multiplyScalar(180).add(handles.key.target.position);const shadowCamera=handles.key.shadow.camera;shadowCamera.left=shadowCamera.bottom=-100;shadowCamera.right=shadowCamera.top=100;shadowCamera.far=380;shadowCamera.updateProjectionMatrix();handles.key.shadow.bias=-.0005;handles.key.shadow.normalBias=.12;handles.key.intensity=clear?3.8:summer?1.22:cold?1.3:2.1;handles.fill.color.set(clear?'#e2eff8':'#809fd6');handles.fill.position.set(8,clear?16:11,clear?24:-10);handles.fill.intensity=clear?.8:summer?1.12:cold?1.0:.55;handles.renderer.toneMappingExposure=clear?1.05:summer?1.08:cold?1.1:1.05;scene.traverse(o=>{if(o.isHemisphereLight){o.intensity=clear?1.65:cold?1.35:1.45;o.color.set(clear?'#dcefff':'#8fb6d5');o.groundColor.set(clear?'#b9ac8b':'#62677a');}});for(const entry of landmarkLights)entry.light.intensity=entry.power*(clear?0:cold?.83:1);
    document.documentElement.dataset.season=current;window.dispatchEvent(new CustomEvent('itong:season-changed',{detail:{season:current}}));};
-  window.addEventListener('itong:set-season',e=>{if(!['spring','summer','autumn','winter'].includes(e.detail?.season))return;current=e.detail.season==='winter'?'winter':'summer';try{localStorage.setItem('itong-season',current);}catch{}apply();});
-  return {connect:opts=>{handles=opts;apply();},update:(time,roofOpacity=1)=>{updateTraffic(time,current==='winter');updateCityCutaway(handles?.camera);riverUniforms.time.value=time;cloudMaterial.uniforms.time.value=time;starMaterial.uniforms.time.value=time;const dt=Math.max(0,time-lastBoatTime);lastBoatTime=time;boatTravel+=dt*(current==='winter'?.19:.28);placeBoats();if(snow.visible)snowMaterial.uniforms.time.value=time;roofSnow.visible=current==='winter'&&roofOpacity>.025;roofSnow.traverse(o=>{if(o.material)o.material.opacity=roofOpacity;});}};
+  // The reversible transition has one scalar timeline. Repeated choices never
+  // queue animations: a new target continues from the currently rendered blend.
+  let weatherTransition=null,dayBlend=current==='clear'?1:0,snowBlend=current==='winter'?1:0;
+  const smooth=(a,b,x)=>{const t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t);};
+  const motionReduced=()=>{let saved=false;try{saved=localStorage.getItem('yutong-motion')==='off';}catch{}return saved||document.documentElement.classList?.contains('lab-motion-off')||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;};
+  const rainMaterials=new Map(),wetMaterials=new Map(),hemisphere=[],snowFadeMaterials=new Map(),leafFadeMaterials=new Map();
+  const collectFade=(group,map)=>group.traverse(o=>{for(const m of(Array.isArray(o.material)?o.material:[o.material]))if(m&&!map.has(m))map.set(m,{opacity:m.opacity,transparent:m.transparent,depthWrite:m.depthWrite});});
+  for(const g of[snowCaps,roofSnow,winter])collectFade(g,snowFadeMaterials);collectFade(summerCrowns,leafFadeMaterials);
+  // Keep layered snow in one render queue, with depth writes throughout melt.
+  // The city blanket must never paint over the higher road/crossing/sidewalk
+  // caps. Blend cleanly into the already-rendered permanent ground, without
+  // screen-space stippling or a render-queue change on the first melting frame.
+  for(const [m]of snowFadeMaterials){m.transparent=true;if('baseTransparent'in m.userData)m.userData.baseTransparent=true;m.needsUpdate=true;}
+  // Opacity alone does not fade Three.js shadow depth. Give seasonal foliage
+  // and snow the same stable coverage fade in the shadow pass as in the color pass.
+  const seasonalDepth=[];
+  for(const [group,isSnow]of [[snowCaps,true],[roofSnow,true],[winter,true],[summerCrowns,false]]){
+   const coverage={value:1},depth=new T.MeshDepthMaterial({depthPacking:T.RGBADepthPacking});
+   depth.onBeforeCompile=shader=>{shader.uniforms.weatherCoverage=coverage;shader.fragmentShader='uniform float weatherCoverage;\n'+shader.fragmentShader;shader.fragmentShader=shader.fragmentShader.replace('void main() {','void main() {\nif(fract(sin(dot(floor(gl_FragCoord.xy),vec2(12.9898,78.233)))*43758.5453)>weatherCoverage)discard;');};
+   depth.customProgramCacheKey=()=> 'weather-depth-coverage-v1';group.traverse(o=>{if(o.isMesh)o.customDepthMaterial=depth;});seasonalDepth.push({coverage,isSnow});
+  }
+  const fadeMaterials=(map,amount)=>{if(map===snowFadeMaterials){for(const[m,b]of map){m.opacity=b.opacity*amount;m.transparent=true;m.depthWrite=b.depthWrite;}return;}for(const[m,b]of map){m.opacity=b.opacity*amount;const transparent=amount<.999||b.transparent;if(m.transparent!==transparent){m.transparent=transparent;m.needsUpdate=true;}m.depthWrite=amount<.999?false:b.depthWrite;}};
+  const collectTransitionMaterials=()=>{handles.rain.traverse(o=>{for(const m of(Array.isArray(o.material)?o.material:[o.material]))if(m&&!rainMaterials.has(m))rainMaterials.set(m,m.opacity);});scene.traverse(o=>{if(o.isHemisphereLight&&!hemisphere.includes(o))hemisphere.push(o);if(o.name==='seasonal-wet-marks')o.traverse(n=>{if(n.material&&!wetMaterials.has(n.material))wetMaterials.set(n.material,n.material.opacity);});});};
+  const skyDirection=clearSkyMaterial.uniforms.sunDirection.value;
+  const renderWeatherBlend=()=>{
+   const day=dayBlend,night=1-day,cold=snowBlend,rainAmount=smooth(.66,.98,night)*(1-cold),snowAmount=cold*smooth(.45,.85,night),moon=smooth(.82,1,night);
+   clearSky.visible=day>.001;clearSkyMaterial.uniforms.daylight.value=day;
+   clearSkyMaterial.uniforms.nightColor.value.set('#131f30').lerp(new T.Color('#1b3047'),cold);scene.background.copy(clearSkyMaterial.uniforms.nightColor.value);
+   snow.visible=snowAmount>.005;snowMaterial.uniforms.weatherFade.value=snowAmount;
+   snowCaps.visible=roofSnow.visible=winter.visible=cold>.005;fadeMaterials(snowFadeMaterials,cold);for(const d of seasonalDepth)d.coverage.value=d.isSnow?cold:1-cold;summerCrowns.visible=cold<.995;fadeMaterials(leafFadeMaterials,1-cold);
+   stars.visible=cold>.005;starMaterial.uniforms.weatherFade.value=cold;
+   skyDirection.copy(sunDirection);skyDirection.y-=night*.32;skyDirection.normalize();sunDisc.visible=day>.02;
+   clouds.visible=night>.12&&cold<.995;cloudMaterial.uniforms.strength.value=smooth(.12,.72,night)*(1-cold);
+   handles.rain.visible=rainAmount>.005;for(const [m,opacity]of rainMaterials){m.opacity=opacity*rainAmount;if(m.uniforms?.weatherFade)m.uniforms.weatherFade.value=rainAmount;}
+   handles.wet.visible=rainAmount*(1-cold)>.0001&&handles.getQuality?.()!=='light';if(handles.wet.material?.uniforms?.wetness)handles.wet.material.uniforms.wetness.value=rainAmount*(1-cold);
+   scene.traverse(o=>{if(o.name==='seasonal-wet-marks')o.visible=rainAmount>.1;});for(const [m,opacity]of wetMaterials)m.opacity=opacity*rainAmount;
+   for(const [m,b]of daylightMaterials){m.color.copy(b.color).lerp(b.day,day);if(b.roughness!==undefined)m.roughness=b.roughness+((dryPalette.has(b.color.getHexString())?.94:b.roughness)-b.roughness)*day;}
+   const lamps=smooth(.3,.82,night);for(const[l,p]of originalStreetLights)l.intensity=p*lamps;for(const[m,o]of originalGlowMaterials)m.opacity=o*lamps;for(const [m,power]of nightEmitters)m.emissiveIntensity=power*lamps;
+   for(const e of landmarkLights)e.light.intensity=fadedOwners.has(e.owner)?0:e.power*lamps*(1-.17*cold);
+   handles.key.target.position.set(-3,0,-10);handles.key.target.updateMatrixWorld();
+   handles.key.position.copy(skyDirection).lerp(new T.Vector3(-8,19,7).normalize(),moon).normalize().multiplyScalar(180).add(handles.key.target.position);
+   handles.key.color.set('#a6c8ed').lerp(new T.Color('#d9e8ff'),cold).lerp(new T.Color('#fff7e6'),day);
+   handles.key.intensity=3.8*(1-smooth(.05,.8,night))+(1.22+.08*cold)*moon;
+   const sh=handles.key.shadow.camera;sh.left=sh.bottom=-100;sh.right=sh.top=100;sh.far=380;sh.updateProjectionMatrix();handles.key.shadow.bias=-.0005;handles.key.shadow.normalBias=.12;
+   handles.fill.color.set('#809fd6').lerp(new T.Color('#e2eff8'),day);handles.fill.intensity=1.12+(.8-1.12)*day-.12*cold;handles.fill.position.set(8,11+5*day,-10+34*day);
+   for(const h of hemisphere){h.intensity=1.45+.2*day-.1*cold;h.color.set('#8fb6d5').lerp(new T.Color('#dcefff'),day);h.groundColor.set('#62677a').lerp(new T.Color('#b9ac8b'),day);}
+   handles.ground.material.color.set('#131f30').lerp(new T.Color('#1b3047'),cold).lerp(new T.Color('#a6d2e8'),day);handles.renderer.toneMappingExposure=1.08-.03*day+.02*cold;
+   riverUniforms.waterColor.value.set('#263e50').lerp(new T.Color('#354958'),cold).lerp(new T.Color('#355970'),day);riverUniforms.skyColor.value.set('#8498aa').lerp(new T.Color('#70869e'),cold).lerp(new T.Color('#becfdb'),day);
+  };
+  const finishWeather=()=>{weatherTransition=null;dayBlend=current==='clear'?1:0;snowBlend=current==='winter'?1:0;for(const d of seasonalDepth)d.coverage.value=1;fadeMaterials(snowFadeMaterials,1);fadeMaterials(leafFadeMaterials,1);snowMaterial.uniforms.weatherFade.value=1;starMaterial.uniforms.weatherFade.value=1;clearSkyMaterial.uniforms.daylight.value=1;skyDirection.copy(sunDirection);cloudMaterial.uniforms.strength.value=1;for(const[m,o]of rainMaterials){m.opacity=o;if(m.uniforms?.weatherFade)m.uniforms.weatherFade.value=1;}for(const[m,o]of wetMaterials)m.opacity=o;apply();};
+  const updateWeather=()=>{if(!weatherTransition)return;if(motionReduced()){finishWeather();return;}const t=Math.min(1,Math.max(0,(performance.now()-weatherTransition.start)/weatherTransition.duration));dayBlend=weatherTransition.from+(weatherTransition.to-weatherTransition.from)*smooth(0,1,t);snowBlend=weatherTransition.fromSnow+(weatherTransition.toSnow-weatherTransition.fromSnow)*smooth(0,1,t);if(t===1)finishWeather();else renderWeatherBlend();};
+  scene.userData.weatherTransition={get active(){return !!weatherTransition;},get daylight(){return dayBlend;},get snowfall(){return snowBlend;},get sunDirection(){return skyDirection;}};
+  window.addEventListener('itong:set-season',e=>{
+   if(!['spring','summer','autumn','winter','clear'].includes(e.detail?.season))return;
+   const next=['winter','clear'].includes(e.detail.season)?e.detail.season:'summer';if(next===current){if(!weatherTransition)apply();return;}
+   const previous=current;current=next;try{localStorage.setItem('itong-season',current);}catch{}
+   const animated=handles?.camera&&typeof performance!=='undefined'&&!motionReduced();
+   if(animated){collectTransitionMaterials();weatherTransition={from:dayBlend,to:current==='clear'?1:0,fromSnow:snowBlend,toSnow:current==='winter'?1:0,start:performance.now(),duration:3200};document.documentElement.dataset.season=current;window.dispatchEvent(new CustomEvent('itong:season-changed',{detail:{season:current}}));renderWeatherBlend();}
+   else finishWeather();
+  });
+  return {connect:opts=>{handles=opts;apply();},update:(time,roofOpacity=1)=>{updateTraffic(time,current==='winter');updateCityCutaway(handles?.camera);updateWeather();if(handles?.camera){clearSky.position.copy(handles.camera.position);sunDisc.position.copy(handles.camera.position).addScaledVector(skyDirection,150);}riverUniforms.time.value=time;cloudMaterial.uniforms.time.value=time;starMaterial.uniforms.time.value=time;const dt=Math.max(0,time-lastBoatTime);lastBoatTime=time;boatTravel+=dt*(.28-.09*snowBlend);placeBoats();if(snow.visible)snowMaterial.uniforms.time.value=time;roofSnow.visible=(weatherTransition?snowBlend:current==='winter'?1:0)>.005&&roofOpacity>.025;roofSnow.traverse(o=>{if(o.material)o.material.opacity=roofOpacity*(weatherTransition?snowBlend:1);});}};
  };
  const switcher=document.querySelector('.season-switch');let ready=false;
  const sync=()=>{switcher.hidden=!ready||document.querySelector('#home-overlay').classList.contains('is-open')||!document.querySelector('#lab-settings').hidden||!document.querySelector('#lab-menu').hidden;};

@@ -7,7 +7,7 @@
   if(section){window.itongEarlySection=section;frame.contentWindow?.postMessage({type:'itong:navigate',section},'*')}
   document.querySelector('#language-toggle').hidden=true;document.querySelector('#lab-interface').hidden=true;document.querySelector('#lab-hotspots').hidden=true;
  }
- document.querySelector('#lab-loading-skip').addEventListener('click',event=>{event.preventDefault();if(window.itongSceneControls){window.dispatchEvent(new Event('itong:open-now'));return}history.pushState({itong:true},'','#home');openEarly(null)});
+ document.querySelector('#lab-loading-skip').addEventListener('click',event=>{event.preventDefault();if(event.currentTarget.hidden)return;if(window.itongSceneControls){window.dispatchEvent(new Event('itong:open-now'));return}history.pushState({itong:true},'','#home');openEarly(null)});
  function returnEarly(){
   if(window.itongSceneControls)return;
   window.itongEarlyHome=false;frame.contentWindow?.postMessage({type:'itong:visibility',visible:false},'*');overlay.classList.remove('is-open');overlay.setAttribute('aria-hidden','true');loader.classList.remove('is-hidden');history.pushState({itong:true},'','#lab');

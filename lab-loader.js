@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const sceneUrl = './lab-scene.js?v=round5-4';
+  const sceneUrl = './lab-scene.js?v=clear-lulu-1';
   const overlay = document.querySelector('#lab-loading');
   const title = document.querySelector('#lab-loading-title');
   const stage = document.querySelector('#lab-loading-stage');
@@ -9,6 +9,10 @@
   const progressbar = document.querySelector('#lab-loading-progress');
   const fill = document.querySelector('#lab-loading-fill');
   const skip = document.querySelector('#lab-loading-skip');
+  const languageButton = document.querySelector('#lab-loading-language');
+  const frame = document.querySelector('#home-frame');
+  const loadingTargets = ['#scene', '#language-toggle', '#lab-interface', '#lab-hotspots'].map(selector => document.querySelector(selector));
+  loadingTargets.forEach(node => node.inert = true);
   const retry = document.querySelector('#lab-loading-retry');
   const strings = {
     en: {
@@ -16,6 +20,7 @@
       download: 'Loading the scene…',
       build: 'Preparing the lab…',
       render: 'Almost ready…',
+      content: 'Preparing page content…',
       ready: 'Ready to explore',
       error: 'The 3D scene could not load.',
       skip: 'Open homepage',
@@ -27,6 +32,7 @@
       download: '正在加载场景…',
       build: '正在布置实验室…',
       render: '即将就绪…',
+      content: '正在准备网页内容…',
       ready: '欢迎探索',
       error: '3D 场景加载失败。',
       skip: '直接进入个人主页',
@@ -37,13 +43,28 @@
 
   let language = 'en';
   try { language = localStorage.getItem('yutong-homepage-language') === 'zh' ? 'zh' : 'en'; } catch {}
-  const copy = strings[language];
-  document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
-  title.textContent = copy.title;
-  stage.textContent = copy.download;
-  skip.textContent = copy.skip;
-  retry.textContent = copy.retry;
-  progressbar.setAttribute('aria-label', copy.label);
+  let copy = strings[language];
+  let stageKey = 'download';
+  function applyLanguage(next) {
+    language = next === 'zh' ? 'zh' : 'en';
+    copy = strings[language];
+    window.itongLoadingLanguage = language;
+    try { localStorage.setItem('yutong-homepage-language', language); } catch {}
+    document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
+    title.textContent = copy.title;
+    stage.textContent = copy[stageKey];
+    skip.textContent = copy.skip;
+    retry.textContent = copy.retry;
+    languageButton.textContent = language === 'zh' ? 'EN' : '中文';
+    languageButton.setAttribute('aria-label', language === 'zh' ? 'Switch to English' : '切换为中文');
+    progressbar.setAttribute('aria-label', copy.label);
+    if (progressbar.hasAttribute('aria-valuetext')) progressbar.setAttribute('aria-valuetext', copy[stageKey]);
+    frame.contentWindow?.postMessage({type:'itong:preferences', language}, '*');
+    window.dispatchEvent(new CustomEvent('itong:loading-language', {detail:{language}}));
+  }
+  languageButton.addEventListener('click', () => applyLanguage(language === 'zh' ? 'en' : 'zh'));
+  window.addEventListener('itong:home-ready', () => { if (!ready) applyLanguage(language); });
+  applyLanguage(language);
 
   let ready = false;
   let failed = false;
@@ -58,7 +79,7 @@
     percent.textContent = `${progress}%`;
     progressbar.setAttribute('aria-valuenow', String(progress));
     progressbar.removeAttribute('aria-valuetext');
-    if (message) stage.textContent = message;
+    if (message) { stageKey = message; stage.textContent = copy[stageKey]; }
   }
 
   function setUnknownProgress() {
@@ -74,7 +95,9 @@
     failed = true;
     clearTimeout(watchdog);
     overlay.classList.remove('is-indeterminate');
+    stageKey = 'error';
     stage.textContent = copy.error;
+    skip.hidden = false;
     percent.textContent = '—';
     progressbar.removeAttribute('aria-valuenow');
     progressbar.setAttribute('aria-valuetext', copy.error);
@@ -85,15 +108,18 @@
   function finish() {
     if (!sceneReady) return;
     if (document.querySelector('#home-frame').dataset.ready !== 'true') {
-      setProgress(97, language === 'zh' ? '正在准备网页内容…' : 'Preparing page content…');
+      setProgress(97, 'content');
       return;
     }
     if (ready || failed) return;
-    setProgress(100, copy.ready);
+    setProgress(100, 'ready');
     ready = true;
     clearTimeout(watchdog);
     setTimeout(() => {
+      loadingTargets.forEach(node => node.inert = false);
+      const restoreFocus = overlay.contains(document.activeElement);
       overlay.classList.add('is-hidden');
+      if (restoreFocus) document.querySelector('#scene').focus({preventScroll:true});
       setTimeout(() => overlay.remove(), 500);
     }, 120);
   }
@@ -105,7 +131,7 @@
 
   function executeScene(source) {
     if (failed) return;
-    if (source !== null) setProgress(84, copy.build);
+    if (source !== null) setProgress(84, 'build');
     watchdog = setTimeout(fail, 45000);
     requestAnimationFrame(() => {
       if (failed) return;
@@ -119,7 +145,7 @@
       }
       script.onload = () => {
         if (blobUrl) URL.revokeObjectURL(blobUrl);
-        if (!ready) setProgress(94, copy.render);
+        if (!ready) setProgress(94, 'render');
       };
       script.onerror = () => {
         if (blobUrl) URL.revokeObjectURL(blobUrl);
@@ -136,7 +162,7 @@
     return;
   }
 
-  setProgress(1, copy.download);
+  setProgress(1, 'download');
   const request = new XMLHttpRequest();
   request.open('GET', sceneUrl, true);
   request.timeout = 60000;
